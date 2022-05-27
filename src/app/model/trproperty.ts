@@ -1,0 +1,22 @@
+export class trproperty {
+    propertyId: number;
+    accNumber: string;
+    debtCollectionNumber: string;
+    idcard: string;
+    propertyType: string;
+    propertyStaus: string;
+    propertyDetail: string;
+    properyAdreess: string;
+    estimatePrice: number;
+    paymentAmount: number;
+    noteNextStep: string;
+    status: string;
+    active: string;
+    remark: string;
+    createdBy: string;
+    createDate: Date;
+    updatedBy: string;
+    updateDate: Date;
+    sourceId: string;
+    source: string;
+};

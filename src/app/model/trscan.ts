@@ -1,0 +1,22 @@
+export class trscan {
+    scanId: number;
+    refId: string;
+    seq: number;
+    debtCollectionNumber: string;
+    idcard: string;
+    fileType: string;
+    documentDate: string;
+    documentType: string;
+    fileName: string;
+    fullName: string;
+    pageCount: number;
+    data: string;
+    active: string;
+    remark: string;
+    createdBy: string;
+    createDate: string;
+    updatedBy: string;
+    updateDate: string;
+    sourceId: string;
+    source: string;
+};

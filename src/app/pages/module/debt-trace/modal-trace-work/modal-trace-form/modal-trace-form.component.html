@@ -1,0 +1,104 @@
+<div class="row">
+    <div class="col">
+        <mat-form-field appearance="legacy" class="width-full">
+            <mat-label>ประเภทการติดตาม</mat-label>
+            <mat-select [(ngModel)]="trfollow.followType">
+                <mat-option *ngFor="let follow of followType" [value]="follow.followTypeId">
+                    {{ follow.name }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>วันที่ติดตาม</mat-label>
+            <input [(ngModel)]="trfollow.followDate" matInput [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div class="col-12">
+        <mat-form-field appearance="legacy">
+            <mat-label>รายละเอียด</mat-label>
+            <textarea [(ngModel)]="trfollow.followDetail" matInput placeholder="รายละเอียด"></textarea>
+        </mat-form-field>
+    </div>
+
+
+    <div class="col-12">
+        <mat-form-field appearance="legacy">
+            <mat-label>ผลการติดตาม</mat-label>
+            <textarea [(ngModel)]="trfollow.result" matInput placeholder="ผลการติดตาม"></textarea>
+        </mat-form-field>
+    </div>
+
+    <!-- <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>ค่าใช้จ่าย</mat-label>
+            <input [(ngModel)]="trfollow.amount" type="number" matInput placeholder="ค่าใช้จ่าย">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>รายละเอียดค่าใช้จ่าย</mat-label>
+            <input [(ngModel)]="trfollow.amountNote" type="text" matInput placeholder="รายละเอียดค่าใช้จ่าย">
+        </mat-form-field>
+    </div> -->
+
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>วันที่ติดตามครั้งต่อไป</mat-label>
+            <input [(ngModel)]="trfollow.nextFollowDate" matInput [matDatepicker]="nextTime">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="nextTime"></mat-datepicker-toggle>
+            <mat-datepicker #nextTime></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>Note การติดตามครั้งหน้า</mat-label>
+            <input [(ngModel)]="trfollow.nextFollowNote" type="text" matInput placeholder="Note การติดตามครั้งหน้า">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>สรุปยอดปิดหนี้</mat-label>
+            <input [(ngModel)]="trfollow.amount" type="number" matInput placeholder="สรุปยอดปิดหนี้">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy" class="width-full">
+            <mat-label>สถานะการติดตาม</mat-label>
+            <mat-select [(ngModel)]="trfollow.status">
+                <mat-option *ngFor="let followStatus of followStatusList" [value]="followStatus.followStatus">{{ followStatus.statusName }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</div>
+
+
+<div class="text-end">
+    <button mat-raised-button color="warn" mat-dialog-close="true">ปิด</button>&nbsp;
+    <button mat-raised-button color="accent" (click)="onClear()">เคลียร์</button>&nbsp;
+    <button mat-raised-button color="primary" (click)="onSave()" cdkFocusInitial>บันทึก</button>
+</div>
+<!-- followId
+debtCollectionNumber
+followType
+followDate
+contactName
+followDetail
+amount
+amountNote
+status
+result
+nextFollowNote
+nextFollowDate
+nextFollowStatus
+active
+remark
+createdBy
+createDate
+updatedBy
+updateDate -->

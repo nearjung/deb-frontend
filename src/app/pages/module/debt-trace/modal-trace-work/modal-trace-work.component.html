@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-12 text-end mb-2">
+        <button mat-flat-button color="primary" (click)="onManageTraceForm()">เพิ่มการติดตาม</button>
+    </div>
+    <div class="col-12" style="color: red;" *ngIf="followList?.length > 0">
+        วันที่ติดตามครั้งต่อไป : {{ followList[followListLength]?.nextFollowDate | date : 'dd/MM/yyyy' }}
+    </div>
+    <div class="col-12">
+        <mat-accordion>
+            <mat-expansion-panel *ngFor="let follow of followList">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{ follow.followDate | date : 'dd/MM/yyyy' }}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        {{ follow.statusName }}
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <p>รายละเอียด : {{ follow.followDetail }}</p>
+                <p>ผลการติดตาม : {{ follow.result }}</p>
+                <p>ค่าใช้จ่าย : {{ follow.amount }}</p>
+                <p>วันที่ติดตามครั้งต่อไป : {{ follow.nextFollowDate | date : 'dd/MM/yyyy' }}</p>
+                <!-- <p>รายละเอียดค่าใช้จ่าย : {{ follow.amountNote }}</p> -->
+                <p>{{ follow.followDetail }}</p>
+            </mat-expansion-panel>
+
+        </mat-accordion>
+    </div>
+</div>
+
+<mat-dialog-actions class="mb-4" align="end">
+    <button mat-raised-button color="warn" mat-dialog-close="true">ปิด</button>&nbsp;
+</mat-dialog-actions>

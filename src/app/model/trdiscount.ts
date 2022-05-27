@@ -1,0 +1,23 @@
+export class trdiscount {
+    discountId: number;
+    accNumber: string;
+    debtCollectionNumber: string;
+    discounType: string;
+    totalAmount: number;
+    discountPercent: number;
+    discountAmount: number;
+    paymentInInstallments: number;
+    attachmentFile: string;
+    approvedDiscountDate: string;
+    paymentAmount: number;
+    remainAmount: number;
+    status: string;
+    active: string;
+    remark: string;
+    createdBy: string;
+    createDate: string;
+    updatedBy: string;
+    updateDate: string;
+    sourceId: string;
+    source: string;
+};

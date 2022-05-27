@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>หมายเลขบัญชีใบเสร็จ</mat-label>
+            <input [(ngModel)]="payment.financeNumber" type="text" matInput placeholder="หมายเลขบัญชีใบเสร็จ">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>วันที่ครบกำหนดงวดสุดท้าย</mat-label>
+            <input [(ngModel)]="payment.deadlineDate" type="date" matInput placeholder="วันที่ครบกำหนดงวดสุดท้าย">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>วิธีการชำระเงิน</mat-label>
+            <input [(ngModel)]="payment.paymentMethod" type="text" matInput placeholder="วิธีการชำระเงิน">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>รายละเอียดการสรุปยอดหนี้คงเหลือ</mat-label>
+            <input [(ngModel)]="payment.tatalAmountDetail" type="text" matInput
+                placeholder="รายล่ะเอียดการสรุปยอดหนี้คงเหลือ">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>ยอดรวมหนี้ที่ต้องจ่าย</mat-label>
+            <input [(ngModel)]="payment.totalAmount" type="text" matInput placeholder="ยอดรวมหนี้ที่ต้องจ่าย">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>ยอดที่จ่ายสุทธิ</mat-label>
+            <input [(ngModel)]="payment.paymentAmount" type="text" matInput placeholder="ยอดที่จ่ายสุทธิ">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>ยอดคงเหลือที่ต้องจ่าย</mat-label>
+            <input [(ngModel)]="payment.balance" type="text" matInput placeholder="ยอดคงเหลือที่ต้องจ่าย">
+        </mat-form-field>
+    </div>
+
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>สถานะชำระเงิน</mat-label>
+            <input [(ngModel)]="payment.status" type="text" matInput placeholder="สถานะชำระเงิน">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>การชำระ</mat-label>
+            <input [(ngModel)]="payment.isCloseInvoice" type="text" matInput placeholder="การชำระ">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <button type="button" mat-raised-button (click)="fileInput.click()">เลือกไฟล์</button> {{ this.filesName }}
+        <input hidden (change)="onFileSelected($event)" #fileInput type="file" id="file">
+    </div>
+</div>
+
+<div class="text-end">
+    <button mat-raised-button color="warn" mat-dialog-close="true">ปิด</button>&nbsp;
+    <button mat-raised-button color="accent" (click)="onClear()">เคลียร์</button>&nbsp;
+    <button mat-raised-button color="primary" (click)="onSave()" cdkFocusInitial>บันทึก</button>
+</div>

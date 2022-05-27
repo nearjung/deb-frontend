@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col-12 mt-2">
+        <h2>ตรวจสอบเอกสาร</h2>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <ng-container *ngFor="let document of documentTypeList">
+            <div class="col-md-3 col-sm-1 mt-2" *ngIf="document.documentTypeId <= 4 || document.documentTypeId === 21">
+                <mat-checkbox [checked]="(document.checked) ? true : false" (click)="document.checked = (document.checked) ? false : true; onSave(document.documentTypeId, document.checked, document.documentId)" [color]="'primary'">{{ document.typeName }}</mat-checkbox>
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+
+<mat-dialog-actions class="mb-4" align="end">
+    <button mat-raised-button color="warn" mat-dialog-close="true">ปิด</button>&nbsp;
+</mat-dialog-actions>

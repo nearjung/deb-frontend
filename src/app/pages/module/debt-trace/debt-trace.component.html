@@ -1,0 +1,97 @@
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            <mat-form-field appearance="standard">
+                <mat-label>ค้นหา</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="กรุณากรอกข้อมูลที่ต้องการค้นหา" #input>
+            </mat-form-field>
+        </div>
+        <div class="col-4">
+            <mat-form-field appearance="standard">
+                <mat-label>เรียงตาม</mat-label>
+                <mat-select [(ngModel)]="sort" (valueChange)="sortFilter()">
+                    <mat-option *ngFor="let obj of filter" [value]="obj.value">
+                        {{obj.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-12">
+            <mat-tab-group>
+                <mat-tab label="รายการสัญญา">
+                    <table class="mat-table mat-elevation-z8 width-full">
+                        <tr class="mat-header-row">
+                            <th class="mat-header-cell">
+                                <mat-checkbox [(ngModel)]="checked" (click)="checkAll()" color="primary"></mat-checkbox>
+                            </th>
+                            <th class="mat-header-cell">เลขที่สัญญา</th>
+                            <th class="mat-header-cell">ช่ือผู้กู้</th>
+                            <th class="mat-header-cell">ยอดรวมทั้งสิ้น</th>
+                            <th class="mat-header-cell">ยอดชำระขั้นต่ำ</th>
+                            <th class="mat-header-cell">อัตราส่วนลด</th>
+                            <th class="mat-header-cell">ติดตามครั้งต่อไป</th>
+                            <th class="mat-header-cell">
+                                <button *ngIf="btnTrace" (click)="openManageTraceModal(debtList, 'assign')"
+                                    mat-icon-button color="primary">
+                                    <mat-icon>switch_account</mat-icon>
+                                </button>
+                            </th>
+                        </tr>
+                        <tr class="mat-row" *ngFor="let debt of debtList; index as number">
+                            <th class="mat-header-cell">
+                                <mat-checkbox [checked]="debt.checked"
+                                    (change)="debt.checked = (debt.checked) ? false : true;" color="primary">
+                                </mat-checkbox>
+                            </th>
+                            <td class="mat-cell">{{ debt.contractNumber }}</td>
+                            <td class="mat-cell">{{ debt.customerName }}</td>
+                            <td class="mat-cell">{{ debt?.paymentAll | number : '1.2-2' }}</td>
+                            <td class="mat-cell">{{ debt?.minimumPayment | number : '1.2-2' }}</td>
+                            <td class="mat-cell">{{ debt?.discountRate | percent : '1.2-2' }}</td>
+                            <td class="mat-cell" style="color: red;">-</td>
+                            <td class="mat-cell">
+                                <button mat-icon-button color="primary" (click)="openManageDocument(debt)">
+                                    <mat-icon>content_paste_search</mat-icon>
+                                </button>
+                                <button (click)="openManageModal(debt)" mat-icon-button color="primary">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                                <button mat-icon-button color="warn">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </mat-tab>
+                <mat-tab label="สัญญาที่ฉันติดตาม">
+                    <table class="mat-table mat-elevation-z8 width-full">
+                        <tr class="mat-header-row">
+                            <th class="mat-header-cell">เลขที่สัญญา</th>
+                            <th class="mat-header-cell">ชื่อลูกค้า</th>
+                            <th class="mat-header-cell">ยอดรวมทั้งสิ้น</th>
+                            <th class="mat-header-cell">ยอดชำระขั้นต่ำ</th>
+                            <th class="mat-header-cell">อัตราส่วนลด</th>
+                            <th class="mat-header-cell">
+                            </th>
+                        </tr>
+                        <tr class="mat-row" *ngFor="let debt of myDebtList; index as number">
+                            <td class="mat-cell">{{ debt.contractNumber }}</td>
+                            <td class="mat-cell">{{ debt.customerName }}</td>
+                            <td class="mat-cell">{{ debt?.paymentAll | number : '1.2-2' }}</td>
+                            <td class="mat-cell">{{ debt?.minimumPayment | number : '1.2-2' }}</td>
+                            <td class="mat-cell">{{ debt?.discountRate | number : '1.2-2' }}</td>
+                            <td class="mat-cell">
+                                <button (click)="openManageModal(debt)" mat-icon-button color="primary">
+                                    <mat-icon>content_paste_search</mat-icon>
+                                </button>
+                                <button mat-icon-button color="warn">
+                                    <mat-icon>cancel</mat-icon>
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>

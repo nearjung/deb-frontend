@@ -1,0 +1,159 @@
+<div class="row">
+    <div class="col-12 mt-2">
+        <h2>ข้อมูลสัญญา</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col mt-2">
+        <mat-form-field appearance="legacy">
+            <mat-label>เลขที่สัญญา</mat-label>
+            <input [(ngModel)]="debt.contractNumber" type="text" matInput placeholder="เลขที่สัญญา">
+        </mat-form-field>
+    </div>
+    <div class="col mt-2">
+        <mat-form-field appearance="legacy">
+            <mat-label>วันที่สัญญา</mat-label>
+            <input [(ngModel)]="debt.contractDatetime" type="date" matInput placeholder="วันที่สัญญา">
+        </mat-form-field>
+    </div>
+    <div class="col mt-2">
+        <mat-form-field appearance="legacy">
+            <mat-label>สินค้า</mat-label>
+            <input [(ngModel)]="debt.product" type="text" matInput placeholder="สินค้า">
+        </mat-form-field>
+    </div>
+    <div class="col mt-2">
+        <mat-form-field appearance="legacy">
+            <mat-label>เลขที่บัตรประชาชน</mat-label>
+            <input [(ngModel)]="debt.idcard" type="text" matInput placeholder="เลขที่บัตรประชาชน">
+        </mat-form-field>
+    </div>
+    <div class="col mt-2">
+        <mat-form-field appearance="legacy">
+            <mat-label>ปดว.จ่ายงาน</mat-label>
+            <input [(ngModel)]="debt.paymentDate" type="date" matInput placeholder="ปดว.จ่ายงาน">
+        </mat-form-field>
+    </div>
+    <div class="col mt-2">
+        <mat-form-field appearance="legacy">
+            <mat-label>เลขที่บัญชี</mat-label>
+            <input [(ngModel)]="debt.accountNumber" type="text" matInput placeholder="เลขที่บัญชี">
+        </mat-form-field>
+    </div>
+    <!-- <div class="col mt-2">
+        <mat-form-field appearance="legacy">
+            <mat-label>ธนาคาร</mat-label>
+            <mat-select [(ngModel)]="debt.bankCode">
+                <mat-option *ngFor="let bank of bankList" [value]="bank.swiftCode">
+                    {{ bank.bankName }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div> -->
+    <div class="col mt-2">
+        <mat-form-field appearance="legacy">
+            <mat-label>ขั้นตอนปกติ</mat-label>
+            <input [(ngModel)]="debt.normalProcedure" type="text" matInput placeholder="ขั้นตอนปกติ">
+        </mat-form-field>
+    </div>
+    <div class="col mt-2">
+        <mat-form-field appearance="legacy">
+            <mat-label>สถานะการทำเอกสาร</mat-label>
+            <mat-select [(ngModel)]="debt.currentStatus">
+                <mat-option *ngFor="let status of statusList" [value]="status.statusCode">
+                    {{ status.statusName }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="col mt-2">
+        <mat-form-field appearance="legacy">
+            <mat-label>ค่าธรรมเนียม</mat-label>
+            <input [(ngModel)]="debt.fee" type="number" matInput placeholder="ค่าธรรมเนียม">
+        </mat-form-field>
+    </div>
+    <div class="col mt-2">
+        <mat-form-field appearance="legacy">
+            <mat-label>ดอกเบี้ยพัก</mat-label>
+            <input [(ngModel)]="debt.breakInterest" type="number" matInput placeholder="ดอกเบี้ยพัก">
+        </mat-form-field>
+    </div>
+    <div class="col mt-2">
+        <mat-form-field appearance="legacy">
+            <mat-label>เงินต้น</mat-label>
+            <input [(ngModel)]="debt.principle" type="number" matInput placeholder="เงินต้น">
+        </mat-form-field>
+    </div>
+    <div class="col mt-2">
+        <mat-form-field appearance="legacy">
+            <mat-label>ดอกเบี้ยไม่รับรู้</mat-label>
+            <input [(ngModel)]="debt.interestNotRecognized" type="number" matInput placeholder="ดอกเบี้ยไม่รับรู้">
+        </mat-form-field>
+    </div>
+    <div class="col mt-2">
+        <mat-form-field appearance="legacy">
+            <mat-label>ยอดรวมทั้งสิ้น</mat-label>
+            <input [(ngModel)]="debt.totalAmount" type="number" matInput placeholder="ยอดรวมทั้งสิ้น">
+        </mat-form-field>
+    </div>
+    <div class="col mt-2">
+        <mat-form-field appearance="legacy">
+            <mat-label>ยอดสรุปที่จะชำระ</mat-label>
+            <input [(ngModel)]="debt.pay" type="number" matInput placeholder="ยอดสรุปที่จะชำระ">
+        </mat-form-field>
+    </div>
+    <div class="col mt-2">
+        <mat-form-field appearance="legacy">
+            <mat-label>วันพิพากษา</mat-label>
+            <input [(ngModel)]="debt.JudgmentDay" type="date" matInput placeholder="วันพิพากษา">
+        </mat-form-field>
+    </div>
+    <div class="col mt-2">
+        <mat-form-field appearance="legacy">
+            <mat-label>ปีหมดอายุความ</mat-label>
+            <input [(ngModel)]="debt.expirationYear" type="text" matInput placeholder="ปีหมดอายุความ">
+        </mat-form-field>
+    </div>
+    <div class="col mt-2">
+        <mat-form-field appearance="legacy">
+            <mat-label>กลุ่ม/กอง</mat-label>
+            <input [(ngModel)]="debt.groupStack" type="text" matInput placeholder="กลุ่ม/กอง">
+        </mat-form-field>
+    </div>
+    <div class="col mt-2">
+        <mat-form-field appearance="legacy">
+            <mat-label>วันที่ตัดหนี้สูญ</mat-label>
+            <input [(ngModel)]="debt.debtWriteOffDate" type="date" matInput placeholder="วันที่ตัดหนี้สูญ">
+        </mat-form-field>
+    </div>
+    <div class="col mt-2">
+        <mat-form-field appearance="legacy">
+            <mat-label>คดีหมดอายุความ/คืนฟ้องล้ม</mat-label>
+            <input [(ngModel)]="debt.lawsuitExpired" type="date" matInput placeholder="คดีหมดอายุความ/คืนฟ้องล้ม">
+        </mat-form-field>
+    </div>
+    <div class="col mt-2">
+        <mat-form-field appearance="legacy">
+            <mat-label>วันที่ส่งธนาคาร</mat-label>
+            <input [(ngModel)]="debt.bankDeliveryDate" type="date" matInput placeholder="วันที่ส่งธนาคาร">
+        </mat-form-field>
+    </div>
+    <div class="col mt-2">
+        <mat-form-field appearance="legacy">
+            <mat-label>บริษัท Outsource</mat-label>
+            <input [(ngModel)]="debt.outsourceCompany" type="text" matInput placeholder="บริษัท Outsource">
+        </mat-form-field>
+    </div>
+    <div class="col mt-2">
+        <mat-form-field appearance="legacy">
+            <mat-label>ปีที่จ่ายงาน</mat-label>
+            <input [(ngModel)]="debt.yearOfPayment" type="text" matInput placeholder="ปีที่จ่ายงาน">
+        </mat-form-field>
+    </div>
+</div>
+
+<div class="text-end">
+    <button mat-raised-button color="warn" mat-dialog-close="true">ปิด</button>&nbsp;
+    <button mat-raised-button color="accent" (click)="onClear()">เคลียร์</button>&nbsp;
+    <button mat-raised-button color="primary" (click)="onSave()" cdkFocusInitial>บันทึก</button>
+</div>

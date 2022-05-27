@@ -1,0 +1,28 @@
+export class msrelationship {
+    relationshipId: number;
+    idcard: string;
+    relationshipTypeCode: string;
+    relationshipManual: string;
+    fullname: string;
+    email: string;
+    tel: string;
+    race: string;
+    address: string;
+    country: string;
+    districts: string;
+    amphures: string;
+    province: string;
+    postal: string;
+    contactName: string;
+    contactName2: string;
+    phone: string;
+    phone2: string;
+    active: string;
+    remark: string;
+    createdBy: string;
+    createDate: Date;
+    updatedBy: string;
+    updateDate: Date;
+    sourceId: string;
+    source: string;
+};

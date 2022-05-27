@@ -1,0 +1,99 @@
+<div mat-dialog-content>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <mat-form-field appearance="legacy">
+                    <mat-label>รหัสบัตรประชาชน</mat-label>
+                    <input [(ngModel)]="relationship.idcard" type="text" matInput placeholder="รหัสบัตรประชาชน">
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="legacy">
+                    <mat-label>ชื่อ-นามสกุล</mat-label>
+                    <input [(ngModel)]="relationship.fullname" type="text" matInput placeholder="ชื่อ-นามสกุล">
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="legacy">
+                    <mat-label>ความสัมพันธ์</mat-label>
+                    <mat-select [(ngModel)]="relationship.relationshipTypeCode">
+                        <mat-option *ngFor="let type of relationshipTypeList" [value]="type.relationshipTypeCode">
+                            {{ type.relationshipTypeName }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="legacy">
+                    <mat-label>อีเมล</mat-label>
+                    <input [(ngModel)]="relationship.email" type="email" matInput placeholder="อีเมล">
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="legacy">
+                    <mat-label>เบอร์โทรศัพท์</mat-label>
+                    <input [(ngModel)]="relationship.tel" type="text" matInput placeholder="เบอร์โทรศัพท์">
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="legacy">
+                    <mat-label>เบอร์โทรศัพท์ 2</mat-label>
+                    <input [(ngModel)]="relationship.phone" type="text" matInput placeholder="เบอร์โทรศัพท์ 2">
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="legacy">
+                    <mat-label>เบอร์โทรศัพท์ 3</mat-label>
+                    <input [(ngModel)]="relationship.phone2" type="text" matInput placeholder="เบอร์โทรศัพท์ 3">
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="legacy">
+                    <mat-label>สัญชาติ</mat-label>
+                    <input [(ngModel)]="relationship.race" type="text" matInput placeholder="สัญชาติ">
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="legacy">
+                    <mat-label>ประเทศ</mat-label>
+                    <input [(ngModel)]="relationship.country" type="text" matInput placeholder="ประเทศ">
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="legacy">
+                    <mat-label>จังหวัด</mat-label>
+                    <input [(ngModel)]="relationship.province" type="text" matInput placeholder="จังหวัด">
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="legacy">
+                    <mat-label>อำเภอ</mat-label>
+                    <input [(ngModel)]="relationship.amphures" type="text" matInput placeholder="อำเภอ">
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="legacy">
+                    <mat-label>ตำบล</mat-label>
+                    <input [(ngModel)]="relationship.districts" type="text" matInput placeholder="ตำบล">
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="legacy">
+                    <mat-label>รหัสไปรษณีย์</mat-label>
+                    <input [(ngModel)]="relationship.postal" type="text" matInput placeholder="รหัสไปรษณีย์">
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="legacy">
+                    <mat-label>ที่อยู่</mat-label>
+                    <input [(ngModel)]="relationship.address" type="text" matInput placeholder="ที่อยู่">
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="text-end">
+    <button mat-raised-button color="warn" mat-dialog-close="true">ปิด</button>&nbsp;
+    <button mat-raised-button color="accent" (click)="onClear()">เคลียร์</button>&nbsp;
+    <button mat-raised-button color="primary" (click)="onSave()" cdkFocusInitial>บันทึก</button>
+</div>

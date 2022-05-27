@@ -1,0 +1,180 @@
+<mat-tab-group>
+    <mat-tab label="ข้อมูลส่วนตัว">
+        <div class="row">
+            <div class="col mt-2">
+                <mat-form-field appearance="legacy">
+                    <mat-label>หมายเลขบัตรประชาชน</mat-label>
+                    <input [(ngModel)]="mscustomer.idcard" type="text" matInput placeholder="หมายเลขบัตรประชาชน">
+                </mat-form-field>
+            </div>
+            <div class="col mt-2">
+                <mat-form-field appearance="legacy">
+                    <mat-label>หมายเลข Passport</mat-label>
+                    <input [(ngModel)]="mscustomer.passport" type="text" matInput placeholder="หมายเลข Passport">
+                </mat-form-field>
+            </div>
+            <div class="col mt-2">
+                <mat-form-field appearance="legacy">
+                    <mat-label>หมายเลขใบขับขี่</mat-label>
+                    <input [(ngModel)]="mscustomer.driver_card" type="text" matInput placeholder="หมายเลขใบขับขี่">
+                </mat-form-field>
+            </div>
+            <div class="col mt-2">
+                <mat-form-field appearance="legacy">
+                    <mat-label>รหัสลูกค้า</mat-label>
+                    <input [(ngModel)]="mscustomer.customerCode" type="text" matInput placeholder="รหัสลูกค้า">
+                </mat-form-field>
+            </div>
+            <div class="col mt-2">
+                <mat-form-field appearance="legacy">
+                    <mat-label>คำนำหน้าชื่อ</mat-label>
+                    <input [(ngModel)]="mscustomer.title" type="text" matInput placeholder="คำนำหน้าชื่อ">
+                </mat-form-field>
+            </div>
+            <div class="col mt-2">
+                <mat-form-field appearance="legacy">
+                    <mat-label>ชื่อ</mat-label>
+                    <input [(ngModel)]="mscustomer.fname" type="text" matInput placeholder="ชื่อ">
+                </mat-form-field>
+            </div>
+            <div class="col mt-2">
+                <mat-form-field appearance="legacy">
+                    <mat-label>ชื่อกลาง</mat-label>
+                    <input [(ngModel)]="mscustomer.secondaryName" type="text" matInput placeholder="ชื่อกลาง">
+                </mat-form-field>
+            </div>
+            <div class="col mt-2">
+                <mat-form-field appearance="legacy">
+                    <mat-label>นามสกุล</mat-label>
+                    <input [(ngModel)]="mscustomer.lname" type="text" matInput placeholder="นามสกุล">
+                </mat-form-field>
+            </div>
+            <div class="col mt-2">
+                <mat-form-field appearance="legacy">
+                    <mat-label>ชื่อภาษาอังกฤษ</mat-label>
+                    <input [(ngModel)]="mscustomer.fnameEng" type="text" matInput placeholder="ชื่อ">
+                </mat-form-field>
+            </div>
+            <div class="col mt-2">
+                <mat-form-field appearance="legacy">
+                    <mat-label>ชื่อกลางภาษาอังกฤษ</mat-label>
+                    <input [(ngModel)]="mscustomer.secondaryNameEng" type="text" matInput placeholder="ชื่อกลาง">
+                </mat-form-field>
+            </div>
+            <div class="col mt-2">
+                <mat-form-field appearance="legacy">
+                    <mat-label>นามสกุลภาษาอังกฤษ</mat-label>
+                    <input [(ngModel)]="mscustomer.lnameEng" type="text" matInput placeholder="นามสกุล">
+                </mat-form-field>
+            </div>
+            <div class="col mt-2">
+                <mat-form-field appearance="legacy">
+                    <mat-label>วันเดือนปีเกิด</mat-label>
+                    <input [(ngModel)]="mscustomer.birthday" type="date" matInput placeholder="วันเดือนปีเกิด">
+                </mat-form-field>
+            </div>
+            <div class="col mt-2">
+                <mat-form-field appearance="legacy">
+                    <mat-label>เชื่อชาติ</mat-label>
+                    <input [(ngModel)]="mscustomer.race" type="text" matInput placeholder="เชื่อชาติ">
+                </mat-form-field>
+            </div>
+            <div class="col mt-2">
+                <mat-form-field appearance="legacy">
+                    <mat-label>ศาสนา</mat-label>
+                    <input [(ngModel)]="mscustomer.religion" type="text" matInput placeholder="ศาสนา">
+                </mat-form-field>
+            </div>
+            <div class="col mt-2">
+                <mat-form-field appearance="legacy">
+                    <mat-label>สถานที่เกิด</mat-label>
+                    <input [(ngModel)]="mscustomer.placeofBirth" type="text" matInput placeholder="สถานที่เกิด">
+                </mat-form-field>
+            </div>
+            <div class="col mt-2">
+                <mat-form-field appearance="legacy">
+                    <mat-label>อาชีพ</mat-label>
+                    <input [(ngModel)]="mscustomer.occupation" type="text" matInput placeholder="อาชีพ">
+                </mat-form-field>
+            </div>
+            <div class="col mt-2">
+                <mat-form-field appearance="legacy">
+                    <mat-label>เพศ</mat-label>
+                    <input [(ngModel)]="mscustomer.sex" type="text" matInput placeholder="เพศ">
+                </mat-form-field>
+            </div>
+            <div class="col mt-2">
+                <mat-form-field appearance="legacy">
+                    <mat-label>เบอร์โทรศัพท์</mat-label>
+                    <input [(ngModel)]="mscustomer.phone" type="text" matInput placeholder="เบอร์โทรศัพท์">
+                </mat-form-field>
+            </div>
+            <div class="col mt-2">
+                <mat-form-field appearance="legacy">
+                    <mat-label>อีเมล</mat-label>
+                    <input [(ngModel)]="mscustomer.email" type="text" matInput placeholder="อีเมล">
+                </mat-form-field>
+            </div>
+            <div class="col mt-2">
+                <mat-form-field appearance="legacy">
+                    <mat-label>การติดต่ออื่น ๆ</mat-label>
+                    <input [(ngModel)]="mscustomer.otherContact" type="text" matInput placeholder="การติดต่ออื่น ๆ">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="text-end">
+            <button mat-raised-button color="warn" mat-dialog-close="true">ปิด</button>&nbsp;
+            <button mat-raised-button color="accent" (click)="onClear()">เคลียร์</button>&nbsp;
+            <button mat-raised-button color="primary" (click)="onSave()" cdkFocusInitial>บันทึก</button>
+        </div>
+    </mat-tab>
+    <mat-tab label="ข้อมูลบุคคลอ้างอิง">
+        <ng-container *ngIf="data">
+            <div class="row" style="width: 98%;">
+                <div class="col text-end p-2 pr-3">
+                    <button (click)="openManageRelationModal(data)" mat-raised-button color="primary">เพิ่มบุคคลอ้างอิง</button>
+                </div>
+            </div>
+            <mat-accordion>
+                <mat-expansion-panel *ngFor="let relation of relationList">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            {{ relation.fullname }}
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            {{ relation.relationshipTypeName }}
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-2 mt-1">รหัสบัตรประชาชน : {{ relation.idcard }}</div>
+                                <div class="col-md-3 col-sm-2 mt-1">
+                                    <a href="tel:{{ relation.tel }}" style="text-decoration: none; color: rgb(185, 26, 26)">เบอร์โทรศัพท์ : {{ relation.tel }}</a>
+                                </div>
+                                <div class="col-md-3 col-sm-2 mt-1">สัญชาติ : {{ relation.race }}</div>
+                                <div class="col-md-3 col-sm-2 mt-1">ประเทศ : {{ relation.country }}</div>
+                                <div class="col-md-3 col-sm-2 mt-1">ที่อยู่ : {{ relation.address }}</div>
+                                <div class="col-md-3 col-sm-2 mt-1">ตำบล : {{ relation.districts }}</div>
+                                <div class="col-md-3 col-sm-2 mt-1">อำเภอ : {{ relation.amphures }}</div>
+                                <div class="col-md-3 col-sm-2 mt-1">จังหวัด : {{ relation.province }}</div>
+                                <div class="col-md-3 col-sm-2 mt-1">รหัสไปรษณีย์ : {{ relation.postal }}</div>
+                                <div class="col-md-3 col-sm-2 mt-1">
+                                    <a href="tel:{{ relation.phone }}" style="text-decoration: none; color: rgb(185, 26, 26)">เบอร์โทรศัพท์ 2 : {{ relation.phone }}</a>
+                                </div>
+                                <div class="col-md-3 col-sm-2 mt-1">
+                                    <a href="tel:{{ relation.phone2 }}" style="text-decoration: none; color: rgb(185, 26, 26)">เบอร์โทรศัพท์ 3 : {{ relation.phone2 }}</a>
+                                </div>
+                            </div>
+                        </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+            <div class="row mt-3" style="width: 98%;">
+                <div class="col text-end">
+                    <button mat-raised-button color="warn" mat-dialog-close="true">ปิด</button>
+                </div>
+            </div>
+        </ng-container>
+        <div *ngIf="!data" class="text-center">กรุณาเลือกลูกค้า</div>
+    </mat-tab>
+</mat-tab-group>

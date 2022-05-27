@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>หมายเลขบัญชี / หมายเลขเอกสาร</mat-label>
+            <input [(ngModel)]="property.accNumber" type="text" matInput placeholder="หมายเลขบัญชี / หมายเลขเอกสาร">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>รหัสบัตรประชาชน</mat-label>
+            <input [(ngModel)]="property.idcard" type="text" matInput placeholder="รหัสบัตรประชาชน">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>ประเภททรัพย์สิน</mat-label>
+            <mat-select [(ngModel)]="property.propertyType">
+                <mat-option *ngFor="let type of typeList" [value]="type.typeId">
+                    {{ type.typeName }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <!-- <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>แหล่งข้อมูลที่สืบทรัพย์</mat-label>
+            <input [(ngModel)]="property." type="text" matInput placeholder="แหล่งข้อมูลที่สืบทรัพย์">
+        </mat-form-field>
+    </div> -->
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>สถานะทรัพย์สิน</mat-label>
+            <input [(ngModel)]="property.propertyStaus" type="text" matInput placeholder="สถานะทรัพย์สิน">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>รายละเอียดทรัพทย์สิน</mat-label>
+            <input [(ngModel)]="property.propertyDetail" type="text" matInput placeholder="รายละเอียดทรัพทย์สิน">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>ที่อยู่ทรัพย์สิน</mat-label>
+            <input [(ngModel)]="property.properyAdreess" type="text" matInput placeholder="ที่อยู่ทรัพย์สิน">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>ราคาประเมิน</mat-label>
+            <input [(ngModel)]="property.estimatePrice" type="number" matInput placeholder="ราคาประเมิน">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>ยอดสรุปอนุมัติที่จ่ายสุทธิ</mat-label>
+            <input [(ngModel)]="property.paymentAmount" type="number" matInput placeholder="ยอดสรุปอนุมัติที่จ่ายสุทธิ">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>ขั้นตอนต่อไป</mat-label>
+            <input [(ngModel)]="property.noteNextStep" type="text" matInput placeholder="ขั้นตอนต่อไป">
+        </mat-form-field>
+    </div>
+</div>
+
+<div class="text-end">
+    <button mat-raised-button color="warn" mat-dialog-close="true">ปิด</button>&nbsp;
+    <button mat-raised-button color="accent" (click)="onClear()">เคลียร์</button>&nbsp;
+    <button mat-raised-button color="primary" (click)="onSave()" cdkFocusInitial>บันทึก</button>
+</div>

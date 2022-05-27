@@ -1,0 +1,16 @@
+<section>
+    <ng-container *ngFor="let document of documentList">
+        <mat-checkbox color="primary" (change)="document.checked = (document.checked) ? false : true; onSave(document)">{{ document.typeName }}</mat-checkbox>
+        <ng-container *ngIf="document.checked">
+            <input hidden type="file" #uploader (change)="trackFile($event, document)" /><button
+                (click)="uploader.click()" color="primary" mat-icon-button>
+                <mat-icon>file_upload</mat-icon>
+            </button> {{ document?.document?.name }}
+        </ng-container><br>
+
+    </ng-container>
+</section>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="warn" mat-dialog-close="true">ปิด</button>&nbsp;
+</mat-dialog-actions>

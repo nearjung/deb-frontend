@@ -1,0 +1,87 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+    background-color: rgb(235, 235, 235);
+}
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.login-box {
+    border-radius: 5px;
+    border: 1px rgb(216, 216, 216) solid;
+    width: 400px;
+    background-color: #fff;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.width-full {
+    width: 100% !important;
+}
+
+table.mat-table {
+    border-spacing: 0;
+}
+tr.mat-header-row {
+    height: 56px;
+}
+tr.mat-row,
+tr.mat-footer-row {
+    height: 48px;
+}
+th.mat-header-cell {
+    text-align: left;
+}
+[dir="rtl"] th.mat-header-cell {
+    text-align: right;
+}
+th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
+    padding: 0;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+th.mat-header-cell:first-of-type,
+td.mat-cell:first-of-type,
+td.mat-footer-cell:first-of-type {
+    padding-left: 24px;
+}
+[dir="rtl"] th.mat-header-cell:first-of-type:not(:only-of-type),
+[dir="rtl"] td.mat-cell:first-of-type:not(:only-of-type),
+[dir="rtl"] td.mat-footer-cell:first-of-type:not(:only-of-type) {
+    padding-left: 0;
+    padding-right: 24px;
+}
+th.mat-header-cell:last-of-type,
+td.mat-cell:last-of-type,
+td.mat-footer-cell:last-of-type {
+    padding-right: 24px;
+}
+[dir="rtl"] th.mat-header-cell:last-of-type:not(:only-of-type),
+[dir="rtl"] td.mat-cell:last-of-type:not(:only-of-type),
+[dir="rtl"] td.mat-footer-cell:last-of-type:not(:only-of-type) {
+    padding-right: 0;
+    padding-left: 24px;
+}
+.mat-table-sticky {
+    position: -webkit-sticky !important;
+    position: sticky !important;
+}
+.mat-table-fixed-layout {
+    table-layout: fixed;
+}
+
+.mat-elevation-z8 {
+    box-shadow: 0 5px 5px -3px #0003, 0 8px 10px 1px #00000024, 0 3px 14px 2px #0000001f;
+}
+
+.mat-dialog-content {
+    max-height: 100vh !important;
+}

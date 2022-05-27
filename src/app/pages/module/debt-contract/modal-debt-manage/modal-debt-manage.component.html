@@ -1,0 +1,37 @@
+<mat-tab-group>
+    <mat-tab label="ข้อมูลสัญญา">
+        <mat-dialog-content class="mat-typography">
+            <app-debt-information [data]="data" (result)="getResult($event)"></app-debt-information>
+        </mat-dialog-content>
+    </mat-tab>
+    <mat-tab label="ข้อมูลผู้กู้">
+        <mat-dialog-content class="mat-typography">
+            <app-customer-information [data]="data"></app-customer-information>
+        </mat-dialog-content>
+    </mat-tab>
+    <mat-tab label="ข้อมูลทรัพย์สิน">
+        <mat-dialog-content class="mat-typography">
+            <app-property-information [data]="data"></app-property-information>
+        </mat-dialog-content>
+    </mat-tab>
+    <mat-tab label="ข้อมูลบังคับคดี">
+        <mat-dialog-content class="mat-typography">
+            <app-lawsuit-information [data]="data"></app-lawsuit-information>
+        </mat-dialog-content>
+    </mat-tab>
+    <mat-tab label="ข้อมูลขอส่วนลด">
+        <mat-dialog-content class="mat-typography">
+            <app-discount-information></app-discount-information>
+        </mat-dialog-content>
+    </mat-tab>
+    <mat-tab label="ข้อมูลการชำระ">
+        <mat-dialog-content class="mat-typography">
+            <app-payment-information [data]="data"></app-payment-information>
+        </mat-dialog-content>
+    </mat-tab>
+    <mat-tab label="เอกสาร">
+        <mat-dialog-content class="mat-typography">
+            <app-document-information [data]="data"></app-document-information>
+        </mat-dialog-content>
+    </mat-tab>
+</mat-tab-group>

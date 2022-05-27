@@ -1,0 +1,43 @@
+<div *ngIf="!data" class="text-center pt-5">
+    กรุณาเลือกสัญญา
+</div>
+<div class="row" *ngIf="data">
+    <div class="col mt-2">
+        <h2>ข้อมูลผู้กู้</h2>
+    </div>
+    <div class="col mt-2 text-end">
+        <button (click)="openManageModal()" mat-raised-button color="primary">เพิ่มผู้กู้</button>
+    </div>
+</div>
+<div class="container" *ngIf="data">
+    <div class="row">
+        <div class="col mt-2 mb-4">
+            <table class="mat-table mat-elevation-z8" style="width: 98%;">
+                <tr class="mat-header-row">
+                    <th class="mat-header-cell">เลขที่บัตรประชาชน</th>
+                    <th class="mat-header-cell">ชื่อ-นามสกุล</th>
+                    <th class="mat-header-cell">เบอร์โทรศัพท์</th>
+                    <th class="mat-header-cell">อีเมล</th>
+                    <th class="mat-header-cell">อื่น ๆ</th>
+                    <th class="mat-header-cell"></th>
+                </tr>
+                <tr class="mat-row" *ngFor="let customer of customerList">
+                    <td class="mat-cell">{{ customer.idcard }}</td>
+                    <td class="mat-cell">{{ customer.title }}{{ customer.fname }} {{ customer.lname }}</td>
+                    <td class="mat-cell">{{ customer.phone }}</td>
+                    <td class="mat-cell">{{ customer.email }}</td>
+                    <td class="mat-cell">{{ (customer.isMain === 'Y') ? 'ผู้กู้หลัก' : 'ผู้กู้รอง' }}</td>
+                    <td class="mat-cell">
+                        <button (click)="onDelete(customer)" mat-icon-button color="warn">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<mat-dialog-actions class="mb-4" align="end">
+    <button mat-raised-button color="warn" mat-dialog-close="true">ปิด</button>&nbsp;
+</mat-dialog-actions>

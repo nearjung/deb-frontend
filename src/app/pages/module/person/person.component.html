@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <mat-form-field appearance="standard">
+                <mat-label>ค้นหา</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="กรุณากรอกข้อมูลที่ต้องการค้นหา" #input>
+            </mat-form-field>
+        </div>
+    </div>
+    <table class="mat-table mat-elevation-z8" style="width: 98%;">
+        <tr class="mat-header-row">
+            <th class="mat-header-cell">เลขที่บัตรประชาชน</th>
+            <th class="mat-header-cell">ชื่อ-นามสกุล</th>
+            <th class="mat-header-cell">เบอร์โทรศัพท์</th>
+            <th class="mat-header-cell">อีเมล</th>
+            <th class="mat-header-cell">อื่น ๆ</th>
+            <th class="mat-header-cell">
+                <button (click)="openManageModal()" mat-flat-button color="primary">
+                    <mat-icon>add</mat-icon> เพิ่มบุคคล
+                </button>
+            </th>
+        </tr>
+        <tr class="mat-row" *ngFor="let customer of customerList">
+            <td class="mat-cell">{{ customer.idcard }}</td>
+            <td class="mat-cell">{{ customer.title }}{{ customer.fname }} {{ customer.lname }}</td>
+            <td class="mat-cell">{{ customer.phone }}</td>
+            <td class="mat-cell">{{ customer.email }}</td>
+            <td class="mat-cell">{{ customer.otherContact }}</td>
+            <td class="mat-cell">
+                <button (click)="openManageModal(customer)" mat-icon-button color="primary">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button (click)="deletePerson(customer)" mat-icon-button color="warn">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>

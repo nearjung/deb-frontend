@@ -1,0 +1,150 @@
+<div class="row">
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>หมายเลขคดีดำ/แดง</mat-label>
+            <input [(ngModel)]="lawsuit.documentNumber" type="text" matInput placeholder="หมายเลขคดีดำ/แดง">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>ทรัพย์สิน</mat-label>
+            <mat-select [(ngModel)]="lawsuit.propertyId">
+                <mat-option *ngFor="let type of propertyList" [value]="type.propertyId">
+                    {{ type.typeName }}&nbsp;{{ type.propertyDetail }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>ประเภทคดี</mat-label>
+            <input [(ngModel)]="lawsuit.lawsuitType" type="text" matInput placeholder="ประเภทคดี">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>ชื่อทนายความ</mat-label>
+            <input [(ngModel)]="lawsuit.lawyerName" type="text" matInput placeholder="ชื่อทนายความ">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>ทุนทรัพย์ฟ้อง</mat-label>
+            <input [(ngModel)]="lawsuit.capitalSuedPay" type="text" matInput placeholder="ทุนทรัพย์ฟ้อง">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>วันที่นำคำบังคับ</mat-label>
+            <input [(ngModel)]="lawsuit.dateOfIntroduction" type="date" matInput placeholder="วันที่นำคำบังคับ">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>ผู้รับผิดชอบ</mat-label>
+            <input [(ngModel)]="lawsuit.responsible" type="text" matInput placeholder="ผู้รับผิดชอบ">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>วันที่ยื่นฟ้อง</mat-label>
+            <input [(ngModel)]="lawsuit.filingDate" type="text" matInput placeholder="วันที่ยื่นฟ้อง">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>วันเวลาที่นัดสืบ</mat-label>
+            <input [(ngModel)]="lawsuit.InvestigationDate" type="date" matInput placeholder="วันเวลาที่นัดสืบ">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>ศาลที่นัดสืบ</mat-label>
+            <input [(ngModel)]="lawsuit.court" type="text" matInput placeholder="ศาลที่นัดสืบ">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>วันที่ศาลพิพากษา</mat-label>
+            <input [(ngModel)]="lawsuit.courtDate" type="date" matInput placeholder="วันที่ศาลพิพากษา">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>ผลสืบ</mat-label>
+            <input [(ngModel)]="lawsuit.sequel" type="text" matInput placeholder="ผลสืบ">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>รายละเอียดอื่นๆ</mat-label>
+            <input [(ngModel)]="lawsuit.otherDetails" type="text" matInput placeholder="รายละเอียดอื่นๆ">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>คำพิพากษา</mat-label>
+            <input [(ngModel)]="lawsuit.sentence" type="text" matInput placeholder="คำพิพากษา">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>ยอดเงินต้นคำพิพากษา</mat-label>
+            <input [(ngModel)]="lawsuit.amountVerdict" type="number" matInput placeholder="ยอดเงินต้นคำพิพากษา">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>ค่าทนายความ</mat-label>
+            <input [(ngModel)]="lawsuit.lawyerFee" type="number" matInput placeholder="ค่าทนายความ">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>ค่าธรรมเนียม</mat-label>
+            <input [(ngModel)]="lawsuit.fee" type="number" matInput placeholder="ค่าธรรมเนียม">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>ค่าใช้จ่ายดำเนินคดี</mat-label>
+            <input [(ngModel)]="lawsuit.litigationCosts" type="number" matInput placeholder="ค่าใช้จ่ายดำเนินคดี">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>ค่าขึ้นศาล</mat-label>
+            <input [(ngModel)]="lawsuit.courtFees" type="number" matInput placeholder="ค่าขึ้นศาล">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>ค่าอื่นๆ</mat-label>
+            <input [(ngModel)]="lawsuit.amountOther" type="number" matInput placeholder="ค่าอื่นๆ">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>หมายเหตุคำอธิบายค่าอื่นๆ</mat-label>
+            <input [(ngModel)]="lawsuit.amountOtherNote" type="text" matInput placeholder="หมายเหตุคำอธิบายค่าอื่นๆ">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>ยอดหนีตามคำพิพากษา</mat-label>
+            <input [(ngModel)]="lawsuit.paymentAmount" type="text" matInput placeholder="ยอดหนีตามคำพิพากษา">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field appearance="legacy">
+            <mat-label>สถานะ</mat-label>
+            <input [(ngModel)]="lawsuit.status" type="text" matInput placeholder="สถานะ">
+        </mat-form-field>
+    </div>
+</div>
+
+<div class="text-end">
+    <button mat-raised-button color="warn" mat-dialog-close="true">ปิด</button>&nbsp;
+    <button mat-raised-button color="accent" (click)="onClear()">เคลียร์</button>&nbsp;
+    <button mat-raised-button color="primary" (click)="onSave()" cdkFocusInitial>บันทึก</button>
+</div>

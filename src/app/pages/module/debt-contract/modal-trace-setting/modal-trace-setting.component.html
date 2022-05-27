@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="col-12">
+        <mat-form-field *ngIf="data?.mode === 'assign'" appearance="legacy" class="width-full">
+            <mat-label>กรุณาเลือกพนักงาน</mat-label>
+            <mat-select [(ngModel)]="trdebtCollection.traceBy">
+                <mat-option *ngFor="let user of syuserList" [value]="user.username">
+                    {{ user.name }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="data?.mode === 'assign'" appearance="legacy" class="width-full">
+            <mat-label>กรุณาเลือกสถานะสัญญา</mat-label>
+            <mat-select [(ngModel)]="setDebtStatus">
+                <mat-option *ngFor="let debt of debtStatus" [value]="debt.statusCode">
+                    {{ debt.statusName }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="data?.mode === 'work'" appearance="legacy" class="width-full">
+            <mat-label>กรุณาเลือกสถานะสัญญา</mat-label>
+            <mat-select [(ngModel)]="setDebtStatus">
+                <mat-option *ngFor="let debt of debtStatus" [value]="debt.statusCode">
+                    {{ debt.statusName }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="col-12">
+        <button class="full-width" (click)="onSave()" mat-flat-button color="primary"><mat-icon>save</mat-icon> บันทึก</button>&nbsp;
+        <button class="full-width" mat-flat-button color="warn" mat-dialog-close><mat-icon>close</mat-icon> ยกเลิก</button>
+    </div>
+</div>

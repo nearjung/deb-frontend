@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <div class="login-box p-4 mt-5" style="margin: auto;">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h2>เข้าสู่ระบบ</h2>
+                    </div>
+                    <div class="col-12 mt-2">
+                        <mat-form-field appearance="legacy">
+                            <mat-label>Username</mat-label>
+                            <input [(ngModel)]="username" type="text" matInput placeholder="ชื่อบัญชี">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 mt-2">
+                        <mat-form-field appearance="legacy">
+                            <mat-label>Password</mat-label>
+                            <input [(ngModel)]="password" type="password" matInput placeholder="รหัสผ่าน">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 mt-2">
+                        <button (click)="login()" class="width-full" mat-flat-button color="primary">เข้าสู่ระบบ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

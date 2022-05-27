@@ -1,0 +1,50 @@
+<mat-toolbar color="primary">
+    <button (click)="drawer.toggle()" mat-icon-button class="example-icon"
+      aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>ระบบจัดการลูกหนี้</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon" (click)="this.router.navigate(['/dashboard']);">
+      <mat-icon>dashboard</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon">
+      <mat-icon matBadge="8" matBadgePosition="after" matBadgeColor="accent">notifications</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" (click)="changeMenu('member-setting', 'ข้อมูลส่วนตัว')">
+      <mat-icon>settings</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </mat-toolbar>
+  
+  <mat-drawer-container autosize
+    style="position: absolute;right: 0px;left: 0px;bottom: 0px;top: 60px; font-family: 'Kanit'">
+    <mat-drawer #drawer mode="over" [opened]="false" class="toolbar">
+      <mat-action-list class="side-content" style="min-width: 250px;">
+        <ng-container *ngFor="let menu of sideMenu">
+          <button (click)="(device !== 'desktop') && drawer.toggle(); changeMenu(menu.pathLink, menu.name)" mat-list-item>
+            <mat-icon mat-card-avatar="" class="mat-card-avatar left-menu">
+              {{menu.icon}}</mat-icon> <span style="margin-left: 10px;">{{menu.name}}</span>
+          </button>
+          <mat-divider></mat-divider>
+        </ng-container>
+  
+  
+      </mat-action-list>
+    </mat-drawer>
+    <div style="overflow: auto; height: 100%;">
+      <app-dashboard *ngIf="page === ''"></app-dashboard>
+      <app-debt-contract *ngIf="page === 'debt'"></app-debt-contract>
+      <app-commission *ngIf="page === 'commission'"></app-commission>
+      <app-person *ngIf="page === 'person'"></app-person>
+      <app-target-manage *ngIf="page === 'target'"></app-target-manage>
+      <app-user-manage *ngIf="page === 'user'"></app-user-manage>
+      <app-export-data *ngIf="page === 'export'"></app-export-data>
+      <app-debt-trace *ngIf="page === 'debtTrace'" [statusCode]="'D2U'"></app-debt-trace>
+      <app-debt-trace *ngIf="page === 'freezeTrace'" [statusCode]="'FREEZE'"></app-debt-trace>
+      <app-debt-trace *ngIf="page === 'sequeststerTrace'" [statusCode]="'SEQUESTSTER'"></app-debt-trace>
+    </div>
+  
+  </mat-drawer-container>
