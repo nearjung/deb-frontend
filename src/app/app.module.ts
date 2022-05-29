@@ -8,10 +8,12 @@ import { MaterialModule } from './app-material.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './authorization/auth.interceptor';
 import { ConfigServerService } from './core/config-server.service';
+import { ActionModalComponent } from './pages/control/action-modal/action-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ActionModalComponent
   ],
   imports: [
     BrowserModule,

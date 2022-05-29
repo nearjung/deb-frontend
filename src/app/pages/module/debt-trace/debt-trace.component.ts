@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { discountRate, minimumPayment } from 'src/app/core/middleclass';
+import { ModalService } from 'src/app/services/modal.service';
 import { TrdebtcollectionService } from 'src/app/services/trdebtcollection.service';
 import Swal from 'sweetalert2';
 import { ModalTraceSettingComponent } from '../debt-contract/modal-trace-setting/modal-trace-setting.component';
@@ -51,7 +52,8 @@ export class DebtTraceComponent implements OnInit {
   constructor(
     private trDebtColectionService: TrdebtcollectionService,
     private routerActive: ActivatedRoute,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private modalService: ModalService
   ) {
   }
 
@@ -81,6 +83,7 @@ export class DebtTraceComponent implements OnInit {
   getDebtByStatus() {
     this.trDebtColectionService.findByStatus(this.statusCode).pipe(takeUntil(this.ngUnsubscribe)).subscribe(result => {
       if (result.serviceResult.status === "Success") {
+        
         this.debtList = result.serviceResult.value;
         for (let debt of this.debtList) {
           debt.minimumPayment = minimumPayment(+debt.principle, +debt.breakInterest, +debt.fee);
@@ -164,5 +167,11 @@ export class DebtTraceComponent implements OnInit {
 
   sortFilter() {
     this.debtList.sort((a, b) => (a['' + this.sort + ''] > b['' + this.sort + '']) ? 1 : ((b['' + this.sort + ''] > a['' + this.sort + '']) ? -1 : 0))
+  }
+
+  async onDelete(debt: any) {
+    const modal = await this.modalService.openModal("warning", "คำเตือน !", "คุณต้องการลบข้อมูลนี้หรือไม่ ?");
+    console.log(modal);
+    
   }
 }

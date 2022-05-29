@@ -153,6 +153,8 @@
 </div>
 
 <div class="text-end">
+    <span *ngIf="debt.status === 'BKKCANCEL'" style="color: red;">วันที่ปิด : {{ debt.updateDate | date: 'dd/MM/yyyy' }}</span>
+    <button mat-raised-button color="primary" *ngIf="debt.debtCollectionNumber" (click)="onCancel()">ยกเลิกจากธนาคาร</button>&nbsp;
     <button mat-raised-button color="warn" mat-dialog-close="true">ปิด</button>&nbsp;
     <button mat-raised-button color="accent" (click)="onClear()">เคลียร์</button>&nbsp;
     <button mat-raised-button color="primary" (click)="onSave()" cdkFocusInitial>บันทึก</button>

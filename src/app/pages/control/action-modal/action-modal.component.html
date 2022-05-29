@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-12 text-center">
+        <img *ngIf="icon === 'yes'" src="./assets/images/correct.png" style="height: 70px;" />
+        <img *ngIf="icon === 'no'" src="./assets/images/remove.png" style="height: 70px;" />
+        <img *ngIf="icon === 'warning'" src="./assets/images/minus-button.png" style="height: 70px;" />
+    </div>
+    <div class="col-12 text-center mt-2" style="font-size: larger;">{{ title }}</div>
+    <div class="col-12 text-center mt-1">{{ description }}</div>
+</div>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close *ngIf="btnCancel" color="{{btnCancelColor}}">{{ btnCancelText }}</button>
+    <button mat-raised-button [mat-dialog-close]="true" *ngIf="btnOk" cdkFocusInitial color="{{btnOkColor}}">{{
+        btnOkText }}</button>
+</mat-dialog-actions>

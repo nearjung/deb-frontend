@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Subject, takeUntil } from 'rxjs';
 import { trdebtcollection } from 'src/app/model/trdebtcollection';
 import { MsbankService } from 'src/app/services/msbank.service';
@@ -24,7 +25,8 @@ export class DebtInformationComponent implements OnInit {
   constructor(
     private trdebtcollectionService: TrdebtcollectionService,
     private msBankService: MsbankService,
-    private msDebtStatusService: MsdebtstatusService
+    private msDebtStatusService: MsdebtstatusService,
+    public dialogRef: MatDialogRef<DebtInformationComponent>,
   ) { }
 
   ngOnInit(): void {
@@ -90,6 +92,36 @@ export class DebtInformationComponent implements OnInit {
 
   onClear() {
     this.debt = new trdebtcollection();
+  }
+
+  onCancel() {
+    Swal.fire({
+      title: "แจ้งเตือน !",
+      text: "คุณต้องการยกเลิกสัญญานี้หรือไม่ ?",
+      icon: "question",
+      confirmButtonText: "ตกลง",
+      cancelButtonText: "ยกเลิก",
+      showCancelButton: true
+    }).then(btn => {
+      if (btn.isConfirmed) {
+        let data = new trdebtcollection();
+        data = this.debt;
+        data.status = "BKKCANCEL";
+        data.updateDate = new Date();
+        data.updatedBy = this.userInfo.username;
+        this.trdebtcollectionService.createOrUpdate(this.debt).subscribe(result => {
+          if (result.serviceResult.status === "Success") {
+            Swal.fire("Success", "บันทึกสำเร็จ !", "success");
+            this.dialogRef.close(true);
+          } else {
+            Swal.fire("Error !", result.serviceResult.text, "error");
+          }
+        }, err => {
+          console.error(err);
+          Swal.fire("Error !", err.message, "error");
+        })
+      }
+    });
   }
 
 }
