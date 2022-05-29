@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Subject, takeUntil } from 'rxjs';
 import { trdebtrelation } from 'src/app/model/trdebtrelation';
+import { ModalPersonManageComponent } from 'src/app/pages/module/person/modal-person-manage/modal-person-manage.component';
 import { ModalRelationManageComponent } from 'src/app/pages/module/person/modal-relation-manage/modal-relation-manage.component';
 import { MscustomerService } from 'src/app/services/mscustomer.service';
 import { TrdebtrelationService } from 'src/app/services/trdebtrelation.service';
@@ -106,9 +107,11 @@ export class ModalCustomerRelationComponent implements OnInit {
   }
 
   openAddCustomer() {
-    const dialogRef = this.dialog.open(ModalRelationManageComponent, {
-      data: this.data,
-      width: "70%"
+    const dialogRef = this.dialog.open(ModalPersonManageComponent, {
+      data: null,
+      width: "100%",
+      height: "95%",
+      disableClose: true
     });
   }
 
