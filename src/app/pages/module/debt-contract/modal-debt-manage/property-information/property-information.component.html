@@ -14,23 +14,17 @@
         <div class="col mt-2 mb-4">
             <table class="mat-table mat-elevation-z8" style="width: 98%;">
                 <tr class="mat-header-row">
-                    <th class="mat-header-cell">ประเภททรัพย์สิน</th>
-                    <th class="mat-header-cell">สถานะทรัพย์สิน</th>
-                    <th class="mat-header-cell">รายละเอียดทรัพทย์สิน</th>
-                    <th class="mat-header-cell">สถานที่ทรัพย์สิน</th>
-                    <th class="mat-header-cell">ราคาประเมิน</th>
-                    <th class="mat-header-cell">ยอดจ่ายสุทธิ</th>
-                    <th class="mat-header-cell">สถานะ</th>
+                    <th class="mat-header-cell">สืบทรัพย์ภูมิลำเนา/ข้างเคียง</th>
+                    <th class="mat-header-cell">สำนักงานจังหวัดที่ดินที่สืบ</th>
+                    <th class="mat-header-cell">วันสืบทรัพย์เขตภูมิลำเนา</th>
+                    <th class="mat-header-cell">ผลสืบภูมิลำเนา พบ/ไม่พบทรัพย์</th>
                     <th class="mat-header-cell"></th>
                 </tr>
                 <tr class="mat-row" *ngFor="let property of propertyList">
-                    <td class="mat-cell">{{ property.typeName }}</td>
-                    <td class="mat-cell">{{ property.propertyStaus }}</td>
-                    <td class="mat-cell">{{ property.propertyDetail }}</td>
-                    <td class="mat-cell">{{ property.properyAdreess }}</td>
-                    <td class="mat-cell">{{ property.estimatePrice | number : '1.2-2' }}</td>
-                    <td class="mat-cell">{{ property.paymentAmount | number : '1.2-2' }}</td>
-                    <td class="mat-cell">{{ property.status }}</td>
+                    <td class="mat-cell">{{ property.domicileProperty }}</td>
+                    <td class="mat-cell">{{ property.provincialOffice }}</td>
+                    <td class="mat-cell">{{ property.dateSearch }}</td>
+                    <td class="mat-cell">{{ property.result }}</td>
                     <td class="mat-cell">
                         <button (click)="openManageModal(property)" mat-icon-button color="primary">
                             <mat-icon>edit</mat-icon>

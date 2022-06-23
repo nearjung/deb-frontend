@@ -39,5 +39,13 @@ export class MsdistrictsService {
             }));
     }
 
+    public findByAmphureId(amphureId: string) {
+        return this.httpClient.get<any>(this.configService.getAPI('msdistricts/findByAmphureId?amphureId=' + amphureId)).pipe(
+            map(respons => {
+                return {
+                    serviceResult: respons
+                }
+            }));
+    }
 
 }

@@ -51,7 +51,7 @@ export class IndexPageComponent implements OnInit {
           icon: 'equalizer',
           pathLink: './'
         }, {
-          name: 'รายการสัญญาใหม่',
+          name: 'รายการสัญญา',
           icon: 'description',
           pathLink: 'debt'
         }, {

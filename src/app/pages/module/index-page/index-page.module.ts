@@ -32,6 +32,9 @@ import { DebtTraceComponent } from '../debt-trace/debt-trace.component';
 import { ModalTraceWorkComponent } from '../debt-trace/modal-trace-work/modal-trace-work.component';
 import { ModalTraceFormComponent } from '../debt-trace/modal-trace-work/modal-trace-form/modal-trace-form.component';
 import { ModalDocumentManageComponent } from '../debt-trace/modal-document-manage/modal-document-manage.component';
+import { ModalWorkplaceComponent } from '../person/modal-workplace/modal-workplace.component';
+import { ModalTelephoneListComponent } from '../debt-trace/modal-telephone-list/modal-telephone-list.component';
+import { ModalImportExcelComponent } from '../debt-contract/modal-import-excel/modal-import-excel.component';
 
 
 @NgModule({
@@ -62,7 +65,10 @@ import { ModalDocumentManageComponent } from '../debt-trace/modal-document-manag
     DebtTraceComponent,
     ModalTraceWorkComponent,
     ModalTraceFormComponent,
-    ModalDocumentManageComponent
+    ModalDocumentManageComponent,
+    ModalWorkplaceComponent,
+    ModalTelephoneListComponent,
+    ModalImportExcelComponent
   ],
   imports: [
     CommonModule,

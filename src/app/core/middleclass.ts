@@ -177,3 +177,163 @@ export function minimumPayment(principle: number = 0, interest: number = 0, fee:
 export function discountRate(totalDebt: number = 0, minimumPayment: number = 0) {
     return (totalDebt - minimumPayment) / totalDebt;
 }
+
+export const excelColumn = [
+    {
+        before: '  สถานะการติดตามหนี้',
+        after: 'debtCollectionStatus'
+    }, {
+        before: ' (ดอกเบี้ยไม่รับรู้) ',
+        after: 'interestNotRecognized'
+    }, {
+        before: ' เงินต้น ',
+        after: 'principle'
+    }, {
+        before: ' ยอดรวมทั้งสิ้น ',
+        after: 'totalAmount'
+    }, {
+        before: 'Legal',
+        after: 'Legal'
+    }, {
+        before: 'กลุ่ม/กอง',
+        after: 'groupStack'
+    }, {
+        before: 'เขตที่สืบข้างเคียง',
+        after: 'adjoiningArea'
+    }, {
+        before: 'คัดทร.มีผล',
+        after: 'civilEffective'
+    }, {
+        before: 'คำพิพากษา',
+        after: 'sentence'
+    }, {
+        before: 'ชื่อ ',
+        after: 'fname'
+    }, {
+        before: 'นามสกุล',
+        after: 'lname'
+    }, {
+        before: 'ชื่อที่ทำงาน',
+        after: 'workName'
+    }, {
+        before: 'บริษัท Outsource',
+        after: 'outsourceCompany'
+    }, {
+        before: 'ปดว.จ่ายงาน',
+        after: 'paymentDate'
+    }, {
+        before: 'ปีที่จ่ายงาน',
+        after: 'yearOfPayment'
+    }, {
+        before: 'ปีหมดอายุความ',
+        after: 'expirationYear'
+    }, {
+        before: 'ผลสืบภูมิลำเนา พบ/ไม่พบทรัพย์',
+        after: 'domicilePropertyFound'
+    }, {
+        before: 'ผู้ดำเนินการ',
+        after: 'operator'
+    }, {
+        before: 'ภาค',
+        after: 'sector'
+    }, {
+        before: 'ลำดับลูกค้า',
+        after: 'customerNumber'
+    }, {
+        before: 'เลขที่บัญชี',
+        after: 'accountNumber'
+    }, {
+        before: 'เลขที่บัตรปชช./กู้หลัก',
+        after: 'idcard'
+    }, {
+        before: 'เลขลงทะเบียน ครั้งที่ 1',
+        after: 'registrationNo1'
+    }, {
+        before: 'เลขลงทะเบียน ครั้งที่ 2',
+        after: 'registrationNo2'
+    }, {
+        before: 'เลขสัญญาบริษัท',
+        after: 'companyContractNumber'
+    }, {
+        before: 'วันที่เช็ค ปกส.',
+        after: 'socialSecurityCheckDate'
+    }, {
+        before: 'วันพิพากษา',
+        after: 'JudgmentDay'
+    }, {
+        before: 'ศาลจังหวัด',
+        after: 'provincialCourt'
+    }, {
+        before: 'อาชีพ',
+        after: 'career'
+    }, {
+        before: 'หมู่/ถนน',
+        after: 'moo'
+    }, {
+        before: 'ตำบล',
+        after: 'districts'
+    }, {
+        before: 'จังหวัด',
+        after: 'province'
+    }, {
+        before: 'รหัสไปรษณีย์',
+        after: 'postal'
+    }, {
+        before: 'วันที่ส่ง ครั้ง1',
+        after: 'deliveryDate1'
+    }, {
+        before: 'วันที่ส่ง ครั้ง2',
+        after: 'deliveryDate2'
+    }, {
+        before: 'สืบทรัพย์ภูมิลำเนา 1 เขต',
+        after: 'InvestigateDomicile'
+    }, {
+        before: 'สำนักงานที่ดินจังหวัดที่สืบ',
+        after: 'landOffice'
+    }, {
+        before: 'วันสืบทรัพย์เขตภูมิลำเนา',
+        after: 'InvestigateDomicileDate'
+    }, {
+        before: 'คดีแดง',
+        after: 'decidedCase'
+    }, {
+        before: 'ขั้นตอนดำเนินงานทีมภาคสนาม',
+        after: 'operationsOfTheFieldTeam'
+    }, {
+        before: 'ขั้นตอนดำเนินงานออฟฟิต',
+        after: 'operatingProcedure'
+    }, {
+        before: 'งานส่งทีม',
+        after: 'teamWork'
+    }, {
+        before: 'ที่อยู่ที่ทำงาน 1',
+        after: 'workAddress1'
+    }, {
+        before: 'เบอร์โทรที่ทำงาน',
+        after: 'workPhoneNumber'
+    }, {
+        before: 'ที่อยู่ที่ทำงาน 2',
+        after: 'workAddress2'
+    }, {
+        before: 'หมายเหตุ',
+        after: 'note1'
+    }, {
+        before: 'หมายเหตุ_1',
+        after: 'note2'
+    }, {
+        before: 'สถานะการทำเอกสาร',
+        after: 'documentationStatus'
+    }, {
+        before: ' ชื่อ  ',
+        after: 'fname'
+    }, {
+        before: ' นามสกุล ',
+        after: 'lname'
+    }, {
+        before: 'ทรัพย์ที่พบ ',
+        after: 'foundProperty'
+    }, {
+        before: 'เดือนที่จ่าย',
+        after: 'monthOfPayment'
+    }
+];

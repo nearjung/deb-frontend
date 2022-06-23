@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { DateAdapter } from '@angular/material/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Subject, takeUntil } from 'rxjs';
 import { trdebtcollection } from 'src/app/model/trdebtcollection';
@@ -22,12 +23,16 @@ export class DebtInformationComponent implements OnInit {
   public bankList: any;
   public statusList: any;
 
+
   constructor(
     private trdebtcollectionService: TrdebtcollectionService,
     private msBankService: MsbankService,
     private msDebtStatusService: MsdebtstatusService,
     public dialogRef: MatDialogRef<DebtInformationComponent>,
-  ) { }
+    private dateAdapter: DateAdapter<Date>
+  ) {
+    this.dateAdapter.setLocale('th-TH');
+  }
 
   ngOnInit(): void {
     if (this.data) {
@@ -108,7 +113,7 @@ export class DebtInformationComponent implements OnInit {
         data = this.debt;
         data.status = "BKKCANCEL";
         data.updateDate = new Date();
-        data.updatedBy = this.userInfo.username;
+        data.updatedBy = this.userInfo.user.username;
         this.trdebtcollectionService.createOrUpdate(this.debt).subscribe(result => {
           if (result.serviceResult.status === "Success") {
             Swal.fire("Success", "บันทึกสำเร็จ !", "success");

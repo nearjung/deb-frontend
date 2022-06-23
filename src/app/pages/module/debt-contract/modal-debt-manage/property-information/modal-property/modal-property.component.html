@@ -1,66 +1,34 @@
 <div class="row">
     <div class="col">
         <mat-form-field appearance="legacy">
-            <mat-label>หมายเลขบัญชี / หมายเลขเอกสาร</mat-label>
-            <input [(ngModel)]="property.accNumber" type="text" matInput placeholder="หมายเลขบัญชี / หมายเลขเอกสาร">
+            <mat-label>สืบทรัพย์ภูมิลำเนา/ข้างเคียง</mat-label>
+            <input [(ngModel)]="property.domicileProperty" type="text" matInput placeholder="สืบทรัพย์ภูมิลำเนา">
         </mat-form-field>
     </div>
     <div class="col">
         <mat-form-field appearance="legacy">
-            <mat-label>รหัสบัตรประชาชน</mat-label>
-            <input [(ngModel)]="property.idcard" type="text" matInput placeholder="รหัสบัตรประชาชน">
+            <mat-label>สำนักงานจังหวัดที่ดินที่สืบ</mat-label>
+            <input [(ngModel)]="property.provincialOffice" type="text" matInput placeholder="สำนักงานจังหวัดที่ดินที่สืบ">
         </mat-form-field>
     </div>
     <div class="col">
         <mat-form-field appearance="legacy">
-            <mat-label>ประเภททรัพย์สิน</mat-label>
-            <mat-select [(ngModel)]="property.propertyType">
-                <mat-option *ngFor="let type of typeList" [value]="type.typeId">
-                    {{ type.typeName }}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
-    <!-- <div class="col">
-        <mat-form-field appearance="legacy">
-            <mat-label>แหล่งข้อมูลที่สืบทรัพย์</mat-label>
-            <input [(ngModel)]="property." type="text" matInput placeholder="แหล่งข้อมูลที่สืบทรัพย์">
-        </mat-form-field>
-    </div> -->
-    <div class="col">
-        <mat-form-field appearance="legacy">
-            <mat-label>สถานะทรัพย์สิน</mat-label>
-            <input [(ngModel)]="property.propertyStaus" type="text" matInput placeholder="สถานะทรัพย์สิน">
+            <mat-label>วันสืบทรัพย์เขตภูมิลำเนา</mat-label>
+            <input [(ngModel)]="property.dateSearch" matInput [matDatepicker]="dateSearch">
+            <mat-datepicker-toggle matSuffix [for]="dateSearch"></mat-datepicker-toggle>
+            <mat-datepicker #dateSearch></mat-datepicker>
         </mat-form-field>
     </div>
     <div class="col">
         <mat-form-field appearance="legacy">
-            <mat-label>รายละเอียดทรัพทย์สิน</mat-label>
-            <input [(ngModel)]="property.propertyDetail" type="text" matInput placeholder="รายละเอียดทรัพทย์สิน">
+            <mat-label>ผลสืบภูมิลำเนา พบ/ไม่พบทรัพย์</mat-label>
+            <input [(ngModel)]="property.result" type="text" matInput placeholder="ผลสืบภูมิลำเนา พบ/ไม่พบทรัพย์">
         </mat-form-field>
     </div>
     <div class="col">
         <mat-form-field appearance="legacy">
-            <mat-label>ที่อยู่ทรัพย์สิน</mat-label>
-            <input [(ngModel)]="property.properyAdreess" type="text" matInput placeholder="ที่อยู่ทรัพย์สิน">
-        </mat-form-field>
-    </div>
-    <div class="col">
-        <mat-form-field appearance="legacy">
-            <mat-label>ราคาประเมิน</mat-label>
-            <input [(ngModel)]="property.estimatePrice" type="number" matInput placeholder="ราคาประเมิน">
-        </mat-form-field>
-    </div>
-    <div class="col">
-        <mat-form-field appearance="legacy">
-            <mat-label>ยอดสรุปอนุมัติที่จ่ายสุทธิ</mat-label>
-            <input [(ngModel)]="property.paymentAmount" type="number" matInput placeholder="ยอดสรุปอนุมัติที่จ่ายสุทธิ">
-        </mat-form-field>
-    </div>
-    <div class="col">
-        <mat-form-field appearance="legacy">
-            <mat-label>ขั้นตอนต่อไป</mat-label>
-            <input [(ngModel)]="property.noteNextStep" type="text" matInput placeholder="ขั้นตอนต่อไป">
+            <mat-label>รายละเอียดทรัพย์สิน</mat-label>
+            <input [(ngModel)]="property.detail" type="text" matInput placeholder="รายละเอียดทรัพย์สิน">
         </mat-form-field>
     </div>
 </div>

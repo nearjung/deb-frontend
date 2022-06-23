@@ -1,0 +1,33 @@
+<ng-container *ngIf="page === 'add'">
+    <div class="row">
+        <div class="col mt-2">
+            <mat-form-field appearance="legacy">
+                <mat-label>เบอร์โทรศัพท์</mat-label>
+                <input [(ngModel)]="contactData.phoneNumber" type="text" matInputplaceholder="เบอร์โทรศัพท์">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="text-end">
+        <button mat-raised-button color="warn"
+            (click)="page = 'list'; contactData.phoneNumber = null;">ยกเลิก</button>&nbsp;
+        <button mat-raised-button color="accent">เคลียร์</button>&nbsp;
+        <button mat-raised-button color="primary" (click)="onSave()" cdkFocusInitial>บันทึก</button>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="page === 'list'">
+    <ng-container *ngFor="let contact of contactList">
+        <div class="mt-2">
+            {{ contact.title + contact.fname }} {{ contact.lname }} {{ (contact.isMain === 'Y') ? 'ผู้กู้หลัก' : 'ผู้กู้รอง' }}
+        </div>
+        <mat-nav-list>
+            <mat-list-item *ngFor="let phone of contact.phoneList; index as number">
+                <a href="tel:{{ phone }}">
+                <button mat-icon-button color="primary">
+                    <mat-icon>call</mat-icon>
+                </button></a>&nbsp;{{ phone }}
+            </mat-list-item>
+            <mat-divider></mat-divider>
+        </mat-nav-list>
+    </ng-container>
+</ng-container>

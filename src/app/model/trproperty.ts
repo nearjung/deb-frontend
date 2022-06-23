@@ -1,15 +1,11 @@
 export class trproperty {
     propertyId: number;
-    accNumber: string;
-    debtCollectionNumber: string;
     idcard: string;
-    propertyType: string;
-    propertyStaus: string;
-    propertyDetail: string;
-    properyAdreess: string;
-    estimatePrice: number;
-    paymentAmount: number;
-    noteNextStep: string;
+    domicileProperty: string;
+    provincialOffice: string;
+    dateSearch: string;
+    result: string;
+    detail: string;
     status: string;
     active: string;
     remark: string;

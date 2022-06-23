@@ -12,6 +12,10 @@ export class trfollow {
     nextFollowNote: string;
     nextFollowDate: string;
     nextFollowStatus: string;
+    phoneNumber: string;
+    paymentType: string;
+    numberOfMonth: number;
+    payPerMonth: number;
     active: string;
     remark: string;
     createdBy: string;

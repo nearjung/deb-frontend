@@ -177,4 +177,51 @@
         </ng-container>
         <div *ngIf="!data" class="text-center mt-2">กรุณาเลือกบุคคล</div>
     </mat-tab>
+    <mat-tab label="สถานที่ทำงาน">
+        <app-modal-workplace *ngIf="data" [idcard]="data?.idcard"></app-modal-workplace>
+        <div *ngIf="!data" class="text-center mt-2">กรุณาเลือกบุคคล</div>
+    </mat-tab>
+    <mat-tab label="ทรัพย์สิน">
+        <mat-dialog-content class="mat-typography">
+            <app-property-information [data]="data"></app-property-information>
+        </mat-dialog-content>
+        <div *ngIf="!data" class="text-center mt-2">กรุณาเลือกบุคคล</div>
+    </mat-tab>
+    <mat-tab label="ข้อมูลติดต่อ">
+        <div class="text-end mt-2" *ngIf="page !== 'addTelephone'">
+            <button (click)="page = 'addTelephone'" mat-flat-button color="primary">
+                <mat-icon>add</mat-icon> เพิ่มเบอร์ติดต่อ
+            </button>
+        </div>
+        
+        <ng-container *ngIf="page === 'addTelephone'">
+            <div class="row">
+                <div class="col mt-2">
+                    <mat-form-field appearance="legacy">
+                        <mat-label>เบอร์โทรศัพท์</mat-label>
+                        <input [(ngModel)]="contactData.phoneNumber" type="text" matInput placeholder="เบอร์โทรศัพท์">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="text-end">
+                <button mat-raised-button color="warn"
+                    (click)="page = 'listTelephone'; contactData.phoneNumber = null;">ยกเลิก</button>&nbsp;
+                <button mat-raised-button color="accent">เคลียร์</button>&nbsp;
+                <button mat-raised-button color="primary" (click)="onSaveTelephone()" cdkFocusInitial>บันทึก</button>
+            </div>
+        </ng-container>
+        
+        <ng-container *ngIf="page === 'listTelephone'">
+            <mat-nav-list>
+                <ng-container *ngFor="let contact of contactList">
+                    <mat-list-item>{{ contact.phoneNumber }}&nbsp;
+                        <button mat-icon-button class="text-end">
+                            <mat-icon (click)="onDeleteTelephone()">delete</mat-icon>
+                        </button>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                </ng-container>
+            </mat-nav-list>
+        </ng-container>
+    </mat-tab>
 </mat-tab-group>

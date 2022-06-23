@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>นำเข้าไฟล์ Excel</h2>
+<mat-dialog-content class="mat-typography">
+    <div class="row">
+        <div class="col">
+            <input hidden type="file" #uploader (change)="trackFile($event)" /><button
+                (click)="uploader.click()" color="primary" mat-icon-button>
+                <mat-icon>file_upload</mat-icon>
+            </button> {{ loadingStatus }}
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Import</button>
+</mat-dialog-actions>

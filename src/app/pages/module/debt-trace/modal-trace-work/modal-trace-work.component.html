@@ -18,7 +18,16 @@
                 </mat-expansion-panel-header>
                 <p>รายละเอียด : {{ follow.followDetail }}</p>
                 <p>ผลการติดตาม : {{ follow.result }}</p>
-                <p>ค่าใช้จ่าย : {{ follow.amount }}</p>
+                <p>รูปแบบการชำระ : {{ follow.paymentType }}</p>
+                <ng-container *ngIf="follow.paymentType === 'ขอผ่อนจ่าย'">
+                    <p>จำนวนเงินที่ผ่อน : {{ follow.payPerMonth | number: '1.2-2' }}</p>
+                    <p>จำนวนเดือน : {{ follow.numberOfMonth }}</p>
+                </ng-container>
+                <ng-container *ngIf="follow.paymentType === 'ปิดเต็ม'">
+                    <p>สรุปยอดปิดหนี้ : {{ follow.amount | number: '1.2-2' }}</p>
+                </ng-container>
+                
+                <!-- <p>ค่าใช้จ่าย : {{ follow.amount }}</p> -->
                 <p>วันที่ติดตามครั้งต่อไป : {{ follow.nextFollowDate | date : 'dd/MM/yyyy' }}</p>
                 <!-- <p>รายละเอียดค่าใช้จ่าย : {{ follow.amountNote }}</p> -->
                 <p>{{ follow.followDetail }}</p>

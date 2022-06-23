@@ -1,35 +1,57 @@
 <div class="container">
     <div class="row">
-        <div class="col-8">
+        <div class="col-6">
             <mat-form-field appearance="standard">
                 <mat-label>ค้นหา</mat-label>
-                <input matInput (keyup)="applyFilter($event)" placeholder="กรุณากรอกข้อมูลที่ต้องการค้นหา" #input>
+                <input matInput [(ngModel)]="filter.searchTxt" (keyup)="searchFilter()"
+                    placeholder="กรุณากรอกข้อมูลที่ต้องการค้นหา" #input>
             </mat-form-field>
         </div>
-        <div class="col-4">
+        <div class="col-2">
             <mat-form-field appearance="standard">
-                <mat-label>เรียงตาม</mat-label>
-                <mat-select [(ngModel)]="sort" (valueChange)="sortFilter()">
-                    <mat-option *ngFor="let obj of filter" [value]="obj.value">
+                <mat-label>พนักงาน</mat-label>
+                <mat-select [(ngModel)]="employee" (selectionChange)="sortEmployee()">
+                    <mat-option>ทั้งหมด</mat-option>
+                    <mat-option *ngFor="let obj of userList" [value]="obj.username">
                         {{obj.name}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
+        <div class="col-2">
+            <mat-form-field appearance="standard">
+                <mat-label>วันที่เริ่มต้น</mat-label>
+                <input matInput [matDatepicker]="startDate" [(ngModel)]="filter.startDate" (dateChange)="filterDate()">
+                <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+                <mat-datepicker #startDate></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="col-2">
+            <mat-form-field appearance="standard">
+                <mat-label>วันที่สิ้นสุด</mat-label>
+                <input matInput [matDatepicker]="endDate" [(ngModel)]="filter.endDate" (dateChange)="filterDate()">
+                <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+                <mat-datepicker #endDate></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+
         <div class="col-12">
             <mat-tab-group>
                 <mat-tab label="รายการสัญญา">
-                    <table class="mat-table mat-elevation-z8 width-full">
+                    <table class="mat-table mat-elevation-z8 width-full" id="debtTrace1">
                         <tr class="mat-header-row">
                             <th class="mat-header-cell">
                                 <mat-checkbox [(ngModel)]="checked" (click)="checkAll()" color="primary"></mat-checkbox>
                             </th>
-                            <th class="mat-header-cell">เลขที่สัญญา</th>
-                            <th class="mat-header-cell">ช่ือผู้กู้</th>
-                            <th class="mat-header-cell">ยอดรวมทั้งสิ้น</th>
-                            <th class="mat-header-cell">ยอดชำระขั้นต่ำ</th>
-                            <th class="mat-header-cell">อัตราส่วนลด</th>
-                            <th class="mat-header-cell">ติดตามครั้งต่อไป</th>
+                            <th class="mat-header-cell" (click)="sortTable(1, 'debtTrace1')">เลขสัญญาบริษัท</th>
+                            <th class="mat-header-cell" (click)="sortTable(2, 'debtTrace1')">ช่ือผู้กู้</th>
+                            <th class="mat-header-cell" (click)="sortTable(3, 'debtTrace1')">ยอดรวมทั้งสิ้น</th>
+                            <th class="mat-header-cell" (click)="sortTable(4, 'debtTrace1')">ยอดชำระขั้นต่ำ</th>
+                            <th class="mat-header-cell" (click)="sortTable(5, 'debtTrace1')">อัตราส่วนลด</th>
+                            <th class="mat-header-cell" (click)="sortTable(6, 'debtTrace1')">ติดตามครั้งต่อไป</th>
+                            <th class="mat-header-cell" (click)="sortTable(7, 'debtTrace1')">ผู้ติดตาม</th>
+                            <th class="mat-header-cell" (click)="sortTable(8, 'debtTrace1')">รูปแบบการชำระ</th>
                             <th class="mat-header-cell">
                                 <button *ngIf="btnTrace" (click)="openManageTraceModal(debtList, 'assign')"
                                     mat-icon-button color="primary">
@@ -43,24 +65,44 @@
                                     (change)="debt.checked = (debt.checked) ? false : true;" color="primary">
                                 </mat-checkbox>
                             </th>
-                            <td class="mat-cell">{{ debt.contractNumber }}</td>
+                            <td class="mat-cell">{{ debt.companyContractNumber }}</td>
                             <td class="mat-cell" *ngIf="debt.relationship?.length > 0">
                                 <ng-container *ngFor="let customer of debt.relationship">
-                                    <span *ngIf="customer.isMain === 'Y'">{{ customer.title + customer.fname }} {{ customer.lname }}<br></span>
-                                    <span *ngIf="customer.isMain !== 'Y'" style="font-size: smaller;">{{ customer.title + customer.fname }} {{ customer.lname }}</span>
+                                    <span *ngIf="customer.isMain === 'Y'">{{ customer.title + customer.fname }} {{
+                                        customer.lname }}<br></span>
+                                    <span *ngIf="customer.isMain !== 'Y'" style="font-size: smaller;">{{ customer.title
+                                        + customer.fname }} {{ customer.lname }}</span>
                                 </ng-container>
                             </td>
                             <td class="mat-cell" *ngIf="debt.relationship?.length === 0">-</td>
                             <td class="mat-cell">{{ debt?.paymentAll | number : '1.2-2' }}</td>
                             <td class="mat-cell">{{ debt?.minimumPayment | number : '1.2-2' }}</td>
                             <td class="mat-cell">{{ debt?.discountRate | percent : '1.2-2' }}</td>
-                            <td class="mat-cell" style="color: red;">-</td>
+                            <td class="mat-cell" style="color: red;" *ngIf="debt?.followDate">{{ debt?.followDate }}
+                            </td>
+                            <td class="mat-cell" style="color: red;" *ngIf="!debt?.followDate">-</td>
+                            <td class="mat-cell">{{ debt?.traceName }}</td>
                             <td class="mat-cell">
-                                <button mat-icon-button color="primary" (click)="openManageDocument(debt)">
+                                <div>{{ debt.paymentType }}</div>
+                                <div style="font-size: smaller;" *ngIf="debt.paymentType === 'ขอผ่อนจ่าย'">
+                                    {{ debt.payPerMonth | number: '1.2-2' }}/{{ debt.numberOfMonth }}
+                                </div>
+                                <div style="font-size: smaller;" *ngIf="debt.paymentType === 'ปิดเต็ม'">
+                                    {{ debt.totalPayAmount | number: '1.2-2' }}
+                                </div>
+                            </td>
+                            <td class="mat-cell">
+                                <button mat-icon-button style="color: green;" (click)="openTelephoneList(debt)">
+                                    <mat-icon>call</mat-icon>
+                                </button>
+                                <button mat-icon-button color="accent" (click)="openManageDocument(debt)">
                                     <mat-icon>article</mat-icon>
                                 </button>
                                 <button (click)="openManageModal(debt)" mat-icon-button color="primary">
-                                    <mat-icon>edit</mat-icon>
+                                    <mat-icon>support_agent</mat-icon>
+                                </button>
+                                <button mat-icon-button style="color: blue;">
+                                    <mat-icon>picture_as_pdf</mat-icon>
                                 </button>
                                 <button mat-icon-button color="warn" (click)="onDelete(debt)">
                                     <mat-icon>delete</mat-icon>
@@ -70,28 +112,63 @@
                     </table>
                 </mat-tab>
                 <mat-tab label="สัญญาที่ฉันติดตาม">
-                    <table class="mat-table mat-elevation-z8 width-full">
+                    <table class="mat-table mat-elevation-z8 width-full" id="debtTrace2">
                         <tr class="mat-header-row">
-                            <th class="mat-header-cell">เลขที่สัญญา</th>
-                            <th class="mat-header-cell">ชื่อลูกค้า</th>
-                            <th class="mat-header-cell">ยอดรวมทั้งสิ้น</th>
-                            <th class="mat-header-cell">ยอดชำระขั้นต่ำ</th>
-                            <th class="mat-header-cell">อัตราส่วนลด</th>
+                            <th class="mat-header-cell" (click)="sortTable(0, 'debtTrace2')">เลขสัญญาบริษัท</th>
+                            <th class="mat-header-cell" (click)="sortTable(1, 'debtTrace2')">ช่ือผู้กู้</th>
+                            <th class="mat-header-cell" (click)="sortTable(2, 'debtTrace2')">ยอดรวมทั้งสิ้น</th>
+                            <th class="mat-header-cell" (click)="sortTable(3, 'debtTrace2')">ยอดชำระขั้นต่ำ</th>
+                            <th class="mat-header-cell" (click)="sortTable(4, 'debtTrace2')">อัตราส่วนลด</th>
+                            <th class="mat-header-cell" (click)="sortTable(5, 'debtTrace2')">ติดตามครั้งต่อไป</th>
+                            <th class="mat-header-cell" (click)="sortTable(6, 'debtTrace2')">รูปแบบการชำระ</th>
                             <th class="mat-header-cell">
+                                <button *ngIf="btnTrace" (click)="openManageTraceModal(debtList, 'assign')"
+                                    mat-icon-button color="primary">
+                                    <mat-icon>switch_account</mat-icon>
+                                </button>
                             </th>
                         </tr>
                         <tr class="mat-row" *ngFor="let debt of myDebtList; index as number">
-                            <td class="mat-cell">{{ debt.contractNumber }}</td>
-                            <td class="mat-cell">{{ debt.customerName }}</td>
+                            <td class="mat-cell">{{ debt.companyContractNumber }}</td>
+                            <td class="mat-cell" *ngIf="debt.relationship?.length > 0">
+                                <ng-container *ngFor="let customer of debt.relationship">
+                                    <span *ngIf="customer.isMain === 'Y'">{{ customer.title + customer.fname }} {{
+                                        customer.lname }}<br></span>
+                                    <span *ngIf="customer.isMain !== 'Y'" style="font-size: smaller;">{{ customer.title
+                                        + customer.fname }} {{ customer.lname }}</span>
+                                </ng-container>
+                            </td>
+                            <td class="mat-cell" *ngIf="debt.relationship?.length === 0">-</td>
                             <td class="mat-cell">{{ debt?.paymentAll | number : '1.2-2' }}</td>
                             <td class="mat-cell">{{ debt?.minimumPayment | number : '1.2-2' }}</td>
-                            <td class="mat-cell">{{ debt?.discountRate | number : '1.2-2' }}</td>
+                            <td class="mat-cell">{{ debt?.discountRate | percent : '1.2-2' }}</td>
+                            <td class="mat-cell" style="color: red;" *ngIf="debt?.followDate">{{ debt?.followDate }}
+                            </td>
+                            <td class="mat-cell" style="color: red;" *ngIf="!debt?.followDate">-</td>
                             <td class="mat-cell">
-                                <button (click)="openManageModal(debt)" mat-icon-button color="primary">
-                                    <mat-icon>content_paste_search</mat-icon>
+                                <div>{{ debt.paymentType }}</div>
+                                <div style="font-size: smaller;" *ngIf="debt.paymentType === 'ขอผ่อนจ่าย'">
+                                    {{ debt.payPerMonth | number: '1.2-2' }}/{{ debt.numberOfMonth }}
+                                </div>
+                                <div style="font-size: smaller;" *ngIf="debt.paymentType === 'ปิดเต็ม'">
+                                    {{ debt.totalPayAmount | number: '1.2-2' }}
+                                </div>
+                            </td>
+                            <td class="mat-cell">
+                                <button mat-icon-button style="color: green;" (click)="openTelephoneList(debt)">
+                                    <mat-icon>call</mat-icon>
                                 </button>
-                                <button mat-icon-button color="warn">
-                                    <mat-icon>cancel</mat-icon>
+                                <button mat-icon-button color="accent" (click)="openManageDocument(debt)">
+                                    <mat-icon>article</mat-icon>
+                                </button>
+                                <button (click)="openManageModal(debt)" mat-icon-button color="primary">
+                                    <mat-icon>support_agent</mat-icon>
+                                </button>
+                                <button mat-icon-button style="color: blue;">
+                                    <mat-icon>picture_as_pdf</mat-icon>
+                                </button>
+                                <button mat-icon-button color="warn" (click)="onReturn(debt)">
+                                    <mat-icon>keyboard_return</mat-icon>
                                 </button>
                             </td>
                         </tr>

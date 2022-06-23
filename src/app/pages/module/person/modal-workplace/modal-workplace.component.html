@@ -1,0 +1,124 @@
+<ng-container *ngIf="page === 'list'">
+    <div class="container">
+        <table class="mat-table mat-elevation-z8" style="width: 98%;">
+            <tr class="mat-header-row">
+                <th class="mat-header-cell">สถานที่ทำงาน</th>
+                <th class="mat-header-cell">เบอร์ติดต่อ</th>
+                <th class="mat-header-cell">จังหวัด</th>
+                <th class="mat-header-cell">วันที่อัพเดท</th>
+                <th class="mat-header-cell">
+                    <button (click)="page = 'add'; onClear(); trworkplace.idcard = idcard;" mat-flat-button color="primary">
+                        <mat-icon>add</mat-icon> เพิ่มสถานที่ทำงาน
+                    </button>
+                </th>
+            </tr>
+            <tr *ngFor="let workPlace of workPlaceList">
+                <td class="mat-cell">{{ workPlace.placeName }}</td>
+                <td class="mat-cell" style="font-size: smaller;">
+                    <span *ngIf="workPlace.telephone1">{{ workPlace.telephone1 }}<br></span>
+                    <span *ngIf="workPlace.telephone2">{{ workPlace.telephone2 }}<br></span>
+                    <span *ngIf="workPlace.telephone3">{{ workPlace.telephone3 }}<br></span>
+                </td>
+                <td class="mat-cell">{{ workPlace.province }}</td>
+                <td class="mat-cell">{{ workPlace.updateDate | date: 'dd/MM/yyyy' }}</td>
+                <td class="mat-cell">
+                    <button (click)="trworkplace = workPlace; page = 'add'" mat-icon-button color="primary">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button (click)="onDelete()" mat-icon-button color="warn">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="text-end mt-3 mr-1">
+        <button mat-raised-button color="warn" mat-dialog-close="true">ปิด</button>&nbsp;
+    </div>
+</ng-container>
+
+
+<!-- Add workplace information -->
+<ng-container *ngIf="page === 'add'">
+    <div class="row">
+        <div class="col mt-2">
+            <mat-form-field appearance="legacy">
+                <mat-label>หมายเลขบัตรประชาชน</mat-label>
+                <input [(ngModel)]="trworkplace.idcard" disabled="true" type="text" matInput
+                    placeholder="หมายเลขบัตรประชาชน">
+            </mat-form-field>
+        </div>
+        <div class="col mt-2">
+            <mat-form-field appearance="legacy">
+                <mat-label>ชื่อที่ทำงาน</mat-label>
+                <input [(ngModel)]="trworkplace.placeName" type="text" matInput placeholder="ชื่อที่ทำงาน">
+            </mat-form-field>
+        </div>
+        <div class="col mt-2">
+            <mat-form-field appearance="legacy">
+                <mat-label>เบอร์ติดต่อสถานที่ทำงาน 1</mat-label>
+                <input [(ngModel)]="trworkplace.telephone1" type="text" matInput
+                    placeholder="เบอร์ติดต่อสถานที่ทำงาน 1">
+            </mat-form-field>
+        </div>
+        <div class="col mt-2">
+            <mat-form-field appearance="legacy">
+                <mat-label>เบอร์ติดต่อสถานที่ทำงาน 2</mat-label>
+                <input [(ngModel)]="trworkplace.telephone2" type="text" matInput
+                    placeholder="เบอร์ติดต่อสถานที่ทำงาน 2">
+            </mat-form-field>
+        </div>
+        <div class="col mt-2">
+            <mat-form-field appearance="legacy">
+                <mat-label>เบอร์ติดต่อสถานที่ทำงาน 3</mat-label>
+                <input [(ngModel)]="trworkplace.telephone3" type="text" matInput
+                    placeholder="เบอร์ติดต่อสถานที่ทำงาน 3">
+            </mat-form-field>
+        </div>
+        <div class="col mt-2">
+            <mat-form-field appearance="legacy">
+                <mat-label>ที่อยู่ที่ทำงาน</mat-label>
+                <input [(ngModel)]="trworkplace.address" type="text" matInput placeholder="หมายเลขบัตรประชาชน">
+            </mat-form-field>
+        </div>
+        <div class="col mt-2">
+            <mat-form-field appearance="legacy">
+                <mat-label>จังหวัด</mat-label>
+                <mat-select [(ngModel)]="trworkplace.province">
+                    <mat-option *ngFor="let province of provinceList" [value]="province.name_th"
+                        (click)="getAmphure(province.id)">{{ province.name_th }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col mt-2">
+            <mat-form-field appearance="legacy">
+                <mat-label>อำเภอ</mat-label>
+                <mat-select [(ngModel)]="trworkplace.amphure">
+                    <mat-option *ngFor="let amphure of amphureList" [value]="amphure.name_th"
+                        (click)="getDistrict(amphure.id)">{{ amphure.name_th }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col mt-2">
+            <mat-form-field appearance="legacy">
+                <mat-label>ตำบล</mat-label>
+                <mat-select [(ngModel)]="trworkplace.district">
+                    <mat-option *ngFor="let district of districtList" [value]="district.name_th"
+                        (click)="trworkplace.zipCode = district.zip_code">{{ district.name_th }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col mt-2">
+            <mat-form-field appearance="legacy">
+                <mat-label>รหัสไปรษณีย์</mat-label>
+                <input [(ngModel)]="trworkplace.zipCode" type="text" matInput placeholder="รหัสไปรษณีย์">
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="text-end">
+        <button mat-raised-button color="warn" (click)="page = 'list';">ยกเลิก</button>&nbsp;
+        <button mat-raised-button color="accent" (click)="onClear()">เคลียร์</button>&nbsp;
+        <button mat-raised-button color="primary" (click)="onSave()" cdkFocusInitial>บันทึก</button>
+    </div>
+</ng-container>

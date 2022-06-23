@@ -2,7 +2,9 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Subject, takeUntil } from 'rxjs';
 import { mscustomer } from 'src/app/model/mscustomer';
+import { mscustomercontact } from 'src/app/model/mscustomercontact';
 import { MscustomerService } from 'src/app/services/mscustomer.service';
+import { MscustomercontactService } from 'src/app/services/mscustomercontact.service';
 import { MsrelationshipService } from 'src/app/services/msrelationship.service';
 import Swal from 'sweetalert2';
 import { ModalRelationManageComponent } from '../modal-relation-manage/modal-relation-manage.component';
@@ -18,18 +20,23 @@ export class ModalPersonManageComponent implements OnInit {
   public userInfo = JSON.parse(localStorage.getItem("userInfo"));
   public customerRelationList: any;
   public relationList: any;
+  public contactData = new mscustomercontact();
+  public page: string = "listTelephone";
+  public contactList: any;
 
   constructor(
     private msCustomerService: MscustomerService,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialog: MatDialog,
-    private msRelationshipService: MsrelationshipService
+    private msRelationshipService: MsrelationshipService,
+    private mscustomerContactService: MscustomercontactService
   ) { }
 
   ngOnInit(): void {
     if (this.data) {
       this.mscustomer = this.data;
       this.getRelation();
+      this.getContact();
     }
   }
 
@@ -94,4 +101,50 @@ export class ModalPersonManageComponent implements OnInit {
     });
   }
 
+  getContact() {
+    this.mscustomerContactService.findByIdCard(this.data.idcard).pipe(takeUntil(this.ngUnsubscribe)).subscribe(result => {
+      if (result.serviceResult.status === "Success") {
+        this.contactList = result.serviceResult.value;
+      }
+    })
+  }
+
+  onDeleteTelephone() {
+    Swal.fire({
+      title: "แจ้งเตือน !",
+      text: "คุณต้องการลบข้อมูลนี้หรือไม่ ?",
+      icon: "question",
+      confirmButtonText: "ตกลง",
+      cancelButtonText: "ยกเลิก",
+      showCancelButton: true
+    }).then(btn => {
+      if (btn.isConfirmed) {
+        this.onSaveTelephone(true);
+      }
+    })
+  }
+
+  onSaveTelephone(remove: boolean = false) {
+    this.contactData.active = (remove) ? "N" : "Y";
+    this.contactData.idcard = this.data.idcard;
+    if (!this.contactData.createBy) {
+      this.contactData.createBy = this.userInfo.user.username;
+      this.contactData.createDate = new Date();
+    }
+    this.contactData.updateBy = this.userInfo.user.username;
+    this.contactData.updateDate = new Date();
+
+    this.mscustomerContactService.createOrUpdate(this.contactData).subscribe(result => {
+      if (result.serviceResult.status === "Success") {
+        Swal.fire("Success !", "บันทึกสำเร็จ !", "success");
+        this.getContact();
+        this.contactData = new mscustomercontact();
+      } else {
+        Swal.fire("Error !", result.serviceResult.text, "error");
+      }
+    }, err => {
+      console.error(err);
+      Swal.fire("Error !", err.message, "error");
+    })
+  }
 }

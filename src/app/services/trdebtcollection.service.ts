@@ -21,6 +21,16 @@ export class TrdebtcollectionService {
             }));
     }
 
+    public importFromExcel(data: any) {
+        return this.httpClient.post<any>(this.configService.getAPI('trdebtcollection/importFromExcel'), data).pipe(
+            map(respons => {
+                return {
+                    serviceResult: respons
+                }
+            }));
+    }
+    
+
     public findAll() {
         return this.httpClient.get<any>(this.configService.getAPI('trdebtcollection/findAll')).pipe(
             map(respons => {
@@ -39,8 +49,9 @@ export class TrdebtcollectionService {
             }));
     }
 
-    public findByStatus(statusCode: string) {
-        return this.httpClient.get<any>(this.configService.getAPI('trdebtcollection/findByStatus?statusCode=' + statusCode)).pipe(
+    public findByStatus(statusCode: string = '', username: string = '', startDate: string = '', endDate: string = '', searchTxt: string = '') {
+        let param = "?statusCode=" + statusCode + "&username=" + username + "&startDate=" + startDate + "&endDate=" + endDate + "&searchTxt=" + searchTxt;
+        return this.httpClient.get<any>(this.configService.getAPI('trdebtcollection/findByStatus' + param)).pipe(
             map(respons => {
                 return {
                     serviceResult: respons

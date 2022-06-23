@@ -39,5 +39,14 @@ export class MsamphuresService {
             }));
     }
 
+    public findByProvinceId(provinceId: string) {
+        return this.httpClient.get<any>(this.configService.getAPI('msamphures/findByProvinceId?provinceId=' + provinceId)).pipe(
+            map(respons => {
+                return {
+                    serviceResult: respons
+                }
+            }));
+    }
+
 
 }

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import * as dayjs from 'dayjs';
 import { Subject, takeUntil } from 'rxjs';
 import { trproperty } from 'src/app/model/trproperty';
 import { TrpropertyService } from 'src/app/services/trproperty.service';
@@ -35,9 +36,12 @@ export class PropertyInformationComponent implements OnInit {
   }
 
   getPropertyList() {
-    this.trPropertyService.findByDebt(this.data.debtCollectionNumber).pipe(takeUntil(this.ngUnsubscribe)).subscribe(result => {
+    this.trPropertyService.findByDebt(this.data.idcard).pipe(takeUntil(this.ngUnsubscribe)).subscribe(result => {
       if (result.serviceResult.status === "Success") {
         this.propertyList = result.serviceResult.value;
+        for (let obj of this.propertyList) {
+          obj.dateSearch = dayjs(obj.dateSearch).add(543, 'year').format("DD/MM/YYYY");
+        }
       } else {
         Swal.fire("Error !", result.serviceResult.text, "error");
       }
@@ -52,7 +56,7 @@ export class PropertyInformationComponent implements OnInit {
     if (data) {
       obj = data;
     } else {
-      obj.debtCollectionNumber = this.data.debtCollectionNumber;
+      obj.idcard = this.data.idcard;
     }
     const dialogRef = this.dialog.open(ModalPropertyComponent, {
       data: obj,

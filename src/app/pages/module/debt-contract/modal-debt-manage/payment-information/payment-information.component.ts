@@ -54,7 +54,7 @@ export class PaymentInformationComponent implements OnInit {
     if (data) {
       obj = data;
     } else {
-      obj.debtCollectionNumber = this.data.debtCollectionNumber;
+      obj.idcard = this.data.idcard;
     }
     const dialogRef = this.dialog.open(ModalPaymentComponent, {
       data: obj,

@@ -67,7 +67,7 @@ export class ModalPropertyComponent implements OnInit {
     }
     this.property.updateDate = new Date();
     this.property.updatedBy = this.userInfo.user.username;
-    this.property.debtCollectionNumber = this.data.debtCollectionNumber;
+    this.property.idcard = this.data.idcard;
     this.property.active = 'Y';
 
     this.trPropertyService.createOrUpdate(this.property).subscribe(result => {
